@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CategoryMapper">
+
+
+	
+	<insert id="insert" parameterType="category">
+		INSERT INTO CATEGORY VALUES(
+		#{CATEGORY_ID}, #{CATEGORY_NAME}, #{PARENTCATEGORY} 
+		)
+		</insert>
+	
+	
+	<update id="update" parameterType="category">
+	
+		UPDATE CATEGORY
+		SETCATEGORY_NAME=#{CATEGORY_NAME},PARENTCATEGORY= #{PARENTCATEGORY}
+		WHERE ID=#{CATEGORY_ID}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM CATEGORY
+		WHERE CATEGORY_ID=#{CATEGORY_ID}
+	</delete>
+	
+	<select id="select" parameterType="String" 
+	resultType="category">
+		SELECT * FROM CATEGORY
+		WHERE ID=#{CATEGORY_ID}
+	</select>
+	
+	<select id="selectall" resultType="category">
+		SELECT * FROM CATEGORY
+	</select>
+	<!-- 
+	<select id="selectdescname" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY NAME DESC
+	</select>
+	
+	<select id="selectascname" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY NAME
+	</select>
+	
+	<select id="selectdescprice" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRICE DESC
+	</select>
+	
+	<select id="selectascprice" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRICE
+	</select>-->
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

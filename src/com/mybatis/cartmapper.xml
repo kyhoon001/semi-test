@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CartMapper">
+
+
+	
+	<insert id="insert" parameterType="cart">
+		INSERT INTO CART VALUES (
+		BASKET_ID_SEQUENCE.nextval, #{email}, #{product_id}, #{count} 
+		)	
+	</insert>
+	
+	<update id="update" parameterType="cart">
+		UPDATE CART
+		SET count=#{count} 
+		WHERE BASKET_ID=#{basket_id}
+	</update>
+	
+	<delete id="delete" parameterType="cart">
+		DELETE FROM CART
+		WHERE BASKET_ID=#{basket_id}
+	</delete>
+	
+	<select id="select" parameterType="cart" 
+	resultType="cart">
+		SELECT * FROM CART
+		WHERE BASKET_ID=#{basket_id}
+	</select>
+	
+	
+	<select id="selectall" resultType="cartproduct"> <!-- 해당 email의 모든 장바구니 조회 -->
+	<!-- 
+		SELECT * FROM PRODUCT
+		WHERE PRODUCT_ID IN (
+		SELECT PRODUCT_ID FROM CART
+		WHERE EMAIL=#{email})
+		-->		
+		
+		select * from product p inner join cart c
+		on p.PRODUCT_ID=c.PRODUCT_ID
+		where c.email=#{email}
+		
+		
+	</select>
+	
+	
+	<select id="findcart_id" resultType="cart"> <!--  몇개들어있냐 -->
+		SELECT count(*) FROM CART
+		WHERE EMAIL=#{email} 
+	</select>
+	
+	
+	<select id="cselect" resultType="cart"> <!--  장바구니 테이블 모두 검색 -->
+		SELECT * FROM CART
+	</select>
+	
+	<select id="count" resultType="cart"> <!--  몇개들어있냐 -->
+		SELECT count(*) FROM CART
+		WHERE EMAIL=#{email} 
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

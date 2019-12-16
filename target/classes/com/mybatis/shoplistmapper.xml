@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ShopListMapper">
+
+
+
+	<insert id="insert" parameterType="product">
+
+		INSERT INTO PRODUCT VALUES (
+		#{product_id} , #{name}, #{price}, #{stock},
+		#{img},
+		#{category_id},#{soldamount} ,#{description}
+		)
+	</insert>
+
+
+	<update id="update" parameterType="product">
+
+		UPDATE PRODUCT
+		SET
+		PRICE=#{price},NAME=#{name},STOCK=#{stock},IMG= #{img},
+		CATEGORY_ID =
+		#{category_id}, SOLDAMOUNT= #{soldamount}, DESCRIPTION =
+		#{description}
+		WHERE ID=#{id}
+	</update>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM PRODUCT
+		WHERE
+		PRODUCT_ID=#{product_id}
+	</delete>
+
+	<select id="search" parameterType="input" resultType="product">
+		SELECT
+		DISTINCT
+		p.product_id,p.name,p.price,p.stock,p.img,
+		p.category_id,p.soldamount,p.description,c.category_name
+		FROM product p
+		join category c
+		on p.category_id = c.category_id
+		where p.name
+		LIKE '%'||#{search}||'%'
+		OR c.category_name LIKE '%'||#{search}||'%'
+
+	</select>
+
+
+	<select id="select" parameterType="String" resultType="product">
+		SELECT *
+		FROM PRODUCT WHERE CATEGORY_ID=#{category_id}
+	</select>
+
+
+	<select id="selectall" resultType="product">
+		SELECT * FROM PRODUCT
+	</select>
+
+
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

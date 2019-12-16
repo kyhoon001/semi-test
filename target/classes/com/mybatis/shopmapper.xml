@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ShopMapper">
+
+
+	
+	<insert id="insert" parameterType="product">
+	
+		INSERT INTO PRODUCT VALUES (
+		#{product_id} , #{name}, #{price}, #{stock}, #{img}, #{category_id},#{soldamount} ,#{description} 
+		)
+	</insert>
+	
+	
+	<update id="update" parameterType="product">
+	
+		UPDATE PRODUCT
+		SET PRICE=#{price},NAME=#{name},STOCK=#{stock},IMG= #{img}, CATEGORY_ID = #{category_id}, SOLDAMOUNT= #{soldamount}, DESCRIPTION = #{description} 
+		WHERE ID=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM PRODUCT
+		WHERE PRODUCT_ID=#{product_id}
+	</delete>
+	
+	<select id="select" resultType="product">
+		SELECT 
+		#{column} 
+		FROM #{table} 
+		#{where} 
+		#{group_by} 
+		#{order_by}
+	</select>
+	
+	<select id="selectall" resultType="product">
+		SELECT * FROM PRODUCT
+	</select>
+	
+<!-- product detail 위한 select 구문 -->
+
+	<select id = "pick" resultType = "product">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCT_ID=#{product_id}
+	</select>
+	
+	<!-- 
+	<select id="selectdescname" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY NAME DESC
+	</select>
+	
+	<select id="selectascname" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY NAME
+	</select>
+	
+	<select id="selectdescprice" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRICE DESC
+	</select>
+	
+	<select id="selectascprice" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRICE
+	</select>-->
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

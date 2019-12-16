@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+<!-- com.mapper 패키지내의 UserMapper 클래스를 통해 해당 XML에 접근한다는 것을 명시 -->
+	<!-- parameterType="user"는 mybatis에서 설정한 UserVO의 alias를 user로 한다고 작성한 것을 반영해서 user로 작성 -->
+	<insert id="insert" parameterType="user">
+		INSERT INTO USERS VALUES (#{email},#{pwd},#{name},#{address},#{phone},#{b_date},#{sex})	
+	</insert>
+	
+	<update id="update" parameterType="user">
+		UPDATE USERS SET PWD=#{pwd},NAME=#{name}, ADDRESS=#{address}, PHONE=#{phone}, B_DATE=#{b_date}, sex=#{sex} WHERE EMAIL=#{email}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM USERS WHERE EMAIL=#{email}
+	</delete>
+	
+	<select id="select" parameterType="String" 
+	resultType="user">
+		SELECT * FROM USERS WHERE EMAIL=#{email}	
+	</select>
+	<!-- select 결과를 자동으로 UserVO의 전역변수 즉 name, pwd, id를 참조해서 결과를 반환하기 때문에 반드시 table column명과 VO의 전역변수명을 동일하게 해줘야함 
+	-->
+	
+	<select id="selectall" resultType="user">
+		SELECT * FROM USERS 
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
