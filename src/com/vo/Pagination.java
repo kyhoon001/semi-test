@@ -195,7 +195,7 @@ public class Pagination {
 	    	if(curPage==this.pageCnt)
 	    		this.endIndex = this.listCnt;
 	    	else
-	    		this.endIndex = (curPage) * pageSize-1;
+	    		this.endIndex = (curPage) * pageSize;
 	        
 	    }
 
@@ -222,6 +222,19 @@ public class Pagination {
 		public void setEndcheck(int curPage) {
 			this.endcheck = curPage < this.pageCnt;
 		}
+
+
+
+		@Override
+		public String toString() {
+			return "Pagination [pageSize=" + pageSize + ", rangeSize=" + rangeSize + ", curPage=" + curPage
+					+ ", curRange=" + curRange + ", listCnt=" + listCnt + ", pageCnt=" + pageCnt + ", rangeCnt="
+					+ rangeCnt + ", startPage=" + startPage + ", endPage=" + endPage + ", startIndex=" + startIndex
+					+ ", prevPage=" + prevPage + ", nextPage=" + nextPage + ", endIndex=" + endIndex + ", nextsection="
+					+ nextsection + ", endcheck=" + endcheck + "]";
+		}
 	    
+		
+		
 
 }

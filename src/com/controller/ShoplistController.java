@@ -17,14 +17,15 @@ import com.comparator.ComparatorPriceDesc;
 import com.frame.ShopService;
 import com.vo.Pagination;
 import com.vo.ProductVO;
+import com.vo.UserInput;
 
 @Controller
 public class ShoplistController {
 
 	@Resource(name = "shoplistservice")
-	ShopService<String, ProductVO> service;
+	ShopService<String, ProductVO,UserInput> service;
 
-	ArrayList<ProductVO> list;
+	
 
 	ComparatorNameAsc compnameasc = new ComparatorNameAsc();
 	ComparatorPriceAsc comppriceasc = new ComparatorPriceAsc();
@@ -34,23 +35,33 @@ public class ShoplistController {
 	@RequestMapping("shop.mc")
 	public ModelAndView shop(String curPage) {
 		ModelAndView mv = new ModelAndView();
-
+		
 		try {
-			ArrayList<ProductVO> list = service.get();
+			int count = service.getcount();
+			Pagination pg = new Pagination(count, 1);
+			UserInput input = new UserInput(pg.getStartIndex(),pg.getEndIndex());
+			ArrayList<ProductVO> list = service.getall(input);
 			ArrayList<Pagination> page = new ArrayList<Pagination>();
-			Pagination pg = new Pagination(list.size(), 1);
+			
 
 			if (curPage != null) {
 				int curPageNum = Integer.parseInt(curPage);
 
-				pg = new Pagination(list.size(), curPageNum);
-
+				pg = new Pagination(count, curPageNum);
+			
+				 input = new UserInput(pg.getStartIndex(),pg.getEndIndex());
+				 list = service.getall(input);
+				 for(ProductVO data : list)
+//				 	System.out.println(data);
+				 System.out.println(input.getStart_index());
+				 System.out.println(input.getEnd_index());
+				 System.out.println(pg.getStartIndex());
+				 System.out.println(pg.getEndIndex());
 			}
+		
 			page.add(pg);
-			if (this.list == null) {
-				this.list = list;
-			}
 			mv.addObject("plist", list);
+			System.out.println(list);
 			mv.addObject("pagination", page);
 			mv.addObject("listprint", "productlist");
 
@@ -265,7 +276,7 @@ public class ShoplistController {
 	
 		try {
 			list = service.searching(search);
-			this.list = list;
+		
 			
 			Pagination pg = new Pagination(list.size(), 1);
 

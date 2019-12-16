@@ -9,11 +9,34 @@ public class ProductVO {
 	private int category_id;
 	private int soldamount;
 	private String description;
+	private int rm;
 	
 	public ProductVO() {
 		
 	}
 	
+	public ProductVO(int product_id, String name, int price, int stock, String img, int category_id, int soldamount,
+			String description, int rm) {
+		super();
+		this.product_id = product_id;
+		this.name = name;
+		this.price = price;
+		this.stock = stock;
+		this.img = img;
+		this.category_id = category_id;
+		this.soldamount = soldamount;
+		this.description = description;
+		this.rm = rm;
+	}
+
+	public int getRm() {
+		return rm;
+	}
+
+	public void setRm(int rm) {
+		this.rm = rm;
+	}
+
 	public ProductVO(int product_id, String name, int price, int stock, String img, int category_id,
 			int soldamount,String description) {
 		super();

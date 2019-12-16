@@ -4,22 +4,35 @@ public class UserInput {
 	String search;
 	int highlim;
 	int lowlim;
+	int start_index;
+	int end_index;
 	
 	public UserInput() {
 		
 	}
 
 	
-	public UserInput(int highlim, int lowlim) {
+	public UserInput(int highlim, int lowlim,int start_index,int end_index) {
 		super();
 		this.highlim = highlim;
 		this.lowlim = lowlim;
+		this.start_index = start_index;
+		this.end_index = end_index;
 	}
 
 
-	public UserInput(String search) {
+	public UserInput(String search,int start_index,int end_index) {
 		super();
 		this.search = search;
+		this.start_index = start_index;
+		this.end_index = end_index;
+	
+	}
+	
+	public UserInput(int start_index,int end_index) {
+		super();
+		this.start_index = start_index;
+		this.end_index = end_index;
 	
 	}
 
@@ -54,11 +67,34 @@ public class UserInput {
 	}
 
 
+	public int getStart_index() {
+		return start_index+1;
+	}
+
+
+	public void setStart_index(int start_index) {
+		this.start_index = start_index;
+	}
+
+
+	public int getEnd_index() {
+		return end_index;
+	}
+
+
+	public void setEnd_index(int end_index) {
+		this.end_index = end_index;
+	}
+
+
 	@Override
 	public String toString() {
-		return "UserInput [search=" + search + ", highlim=" + highlim + ", lowlim=" + lowlim + "]";
+		return "UserInput [search=" + search + ", highlim=" + highlim + ", lowlim=" + lowlim + ", start_index="
+				+ start_index + ", end_index=" + end_index + "]";
 	}
+
 	
+
 	
 	
 }

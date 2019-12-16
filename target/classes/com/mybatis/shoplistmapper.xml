@@ -34,16 +34,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 
 	<select id="search" parameterType="input" resultType="product">
-		SELECT
-		DISTINCT
-		p.product_id,p.name,p.price,p.stock,p.img,
+       select * from
+        (
+        select DISTINCT
+		rownum rm,p.product_id,p.name,p.price,p.stock,p.img,
 		p.category_id,p.soldamount,p.description,c.category_name
-		FROM product p
-		join category c
-		on p.category_id = c.category_id
-		where p.name
-		LIKE '%'||#{search}||'%'
-		OR c.category_name LIKE '%'||#{search}||'%'
+		FROM product p,category c
+		where p.category_id = c.category_id
+		and p.name
+		LIKE '%1%'
+		OR c.category_name LIKE '%1%' 
+        order by rm asc
+        )
+        where rm between #{strat_index} and #{end_index}
 
 	</select>
 
@@ -54,11 +57,31 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 
-	<select id="selectall" resultType="product">
-		SELECT * FROM PRODUCT
+	<select id="selectall" parameterType="input" resultType="product">
+		
+   select * from (SELECT rownum rm , p.* FROM PRODUCT p) where rm between #{start_index} and #{end_index}
 	</select>
 
+	<select id="selectallcount" resultType="Integer">
+		 SELECT count(*) FROM PRODUCT
+	</select>
+	
+	<select id="searchcount" parameterType="input" resultType="Integer">
+       select count(*) from
+        (
+        select DISTINCT
+		rownum rm,p.product_id,p.name,p.price,p.stock,p.img,
+		p.category_id,p.soldamount,p.description,c.category_name
+		FROM product p,category c
+		where p.category_id = c.category_id
+		and p.name
+		LIKE '%'||#{search}||'%' 
+		OR c.category_name LIKE '%'||#{search}||'%' 
+        order by rm asc
+        )
+        where rm between #{start_index} and #{end_index}
 
+	</select>
 
 
 

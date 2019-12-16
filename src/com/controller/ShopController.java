@@ -42,6 +42,39 @@ public class ShopController {
 	}
 	
 	
+//test case를 위함
+//이걸로 product를 넣어줫음..
+	@RequestMapping("/test.mc")
+	public String test() {
+		for(int i = 25; i < 33; i++) {
+		ProductVO p;
+		int product_id = i;
+//		int product_id = 24;
+		String name = "testcase" + i;
+//		String name = "testcase" + 24;
+		int price = (int) (Math.random()*400 + 1 )*10;
+		int stock = (int)(Math.random()*100 + 1 );
+		String img = "img" + (int)(Math.random()*4 + 9 ) + ".png";
+//		String img = "img8.png";
+		int category_id = 8;
+		int soldamount = (int)(Math.random()*17 + 1 );
+		String description = "board 입니다. 임시로 넣은 test case입니다.";
+		p = new ProductVO(product_id,name,price,stock,img,category_id,soldamount,description);
+		System.out.println(p.toString());
+		try {
+			service.register(p);
+			System.out.println("성공");
+			System.out.println(p.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+
+		return "redirect:main.mc";
+	}
+	//test case를 위함.
+	
 	
 	
 //	@RequestMapping("/shop-single.mc")

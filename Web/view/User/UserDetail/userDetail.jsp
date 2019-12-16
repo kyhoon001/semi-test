@@ -46,30 +46,47 @@
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-              <div class="site-top-icons">
+                            <div class="site-top-icons">
                 <ul>
-               	<c:choose>
-               		<c:when test="${email == null }">
-               		<!-- Not loginned -->
-               			<li><a href="login.mc"><span class="icon icon-person"></span></a></li>
-	                 	<li>
-	                    <a href="cart.html" class="site-cart">
-	                      <span class="icon icon-shopping_cart"></span>
-	                    </a>
-	                  	</li> 
-               		</c:when>
-               		<c:otherwise>
-               		<!-- loginned -->
-               			<li><a href="userDetail.mc?email=">${name }님</a>
-	                  	<li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
-	                 	<li>
-	                    <a href="cart.html" class="site-cart">
-	                      <span class="icon icon-shopping_cart"></span>
-	                      <span class="count">2</span>
-	                    </a>
-	                  	</li> 
-               		</c:otherwise>
-               	</c:choose>
+                  <c:choose>
+                     <c:when test="${email == null }">
+                     <!-- Not loginned -->
+                        <li><a href="login.mc"><span class="icon icon-person"></span></a></li>
+                       <li>
+                    <a href="cart.mc" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                      <!--  ㅎㅎㅎㅎ --> <c:choose>
+                                    <c:when test="${count == null }">
+                                    </c:when>
+
+                                    <c:otherwise>
+                                       <span class="count">${count }</span>
+                                    </c:otherwise>
+                                 </c:choose>
+
+                           </a>
+                  </li>  
+                     </c:when>
+                     <c:otherwise>
+                     <!-- loginned -->
+                        <li><a href="userDetail.mc?email=${email }">${name }님</a>
+                        <li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
+                       <li>
+                    <a href="cart.mc" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                      <!--  ㅎㅎㅎㅎ --> <c:choose>
+                                    <c:when test="${count == null }">
+                                    </c:when>
+
+                                    <c:otherwise>
+                                       <span class="count">${count }</span>
+                                    </c:otherwise>
+                                 </c:choose>
+
+                           </a>
+                  </li> 
+                     </c:otherwise>
+                  </c:choose>
                   
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
