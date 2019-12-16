@@ -1,21 +1,13 @@
 package com.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.comparator.ComparatorNameAsc;
@@ -25,7 +17,6 @@ import com.comparator.ComparatorPriceDesc;
 import com.frame.ShopService;
 import com.vo.Pagination;
 import com.vo.ProductVO;
-import com.vo.UserInput;
 
 @Controller
 public class ShoplistController {

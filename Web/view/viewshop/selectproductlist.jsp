@@ -57,7 +57,7 @@
 			<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 				<div class="block-4 text-center border">
 					<figure class="block-4-image">
-						<a href="shop-single.html"><img src="images/${p.img }.jpg"
+						<a href="shop-single.html"><img src="images/${p.img }"
 							alt="Image placeholder" class="img-fluid"></a>
 					</figure>
 					<div class="block-4-text p-4">

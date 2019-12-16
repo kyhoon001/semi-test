@@ -2,8 +2,8 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+  <form action="cartAdd.mc" method="get">
   <div class="row">
-     <form action="cartAdd.mc" method="get">
      
         <input type="hidden" name="product_id" value="${dbproduct.product_id}" id="product_id">
           <div class="col-md-6">
@@ -36,8 +36,9 @@
             <p><button id="cartAdd" class="buy-now btn btn-sm btn-primary">장바구니</button></p>
          
           </div>
-          </form>
+          
         </div>
+        </form>
        
         <script>
         

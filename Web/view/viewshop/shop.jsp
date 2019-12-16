@@ -30,14 +30,17 @@
 	<div class="site-wrap">
 		<header class="site-navbar" role="banner">
 			<div class="site-navbar-top">
-				<div class="container">
+				<div
+					 class="container">
 					<div class="row align-items-center">
 
 						<div
 							class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-							<form action="search.mc" class="site-block-top-search" method="post">
+							<form action="search.mc" class="site-block-top-search"
+								method="post">
 								<span class="icon icon-search2"></span> <input type="text"
-									class="form-control border-0" name="search" placeholder="Search">
+									class="form-control border-0" name="search"
+									placeholder="Search">
 							</form>
 						</div>
 
@@ -51,11 +54,28 @@
 						<div class="col-6 col-md-4 order-3 order-md-3 text-right">
 							<div class="site-top-icons">
 								<ul>
-									<li><a href="#"><span class="icon icon-person"></span></a></li>
-									<li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-									<li><a href="cart.html" class="site-cart"> <span
-											class="icon icon-shopping_cart"></span> <span class="count">2</span>
-									</a></li>
+									<c:choose>
+               		<c:when test="${email == null }">
+               		<!-- Not loginned -->
+               			<li><a href="login.mc"><span class="icon icon-person"></span></a></li>
+	                 	<li>
+	                    <a href="cart.mc" class="site-cart">
+	                      <span class="icon icon-shopping_cart"></span>
+	                    </a>
+	                  	</li> 
+               		</c:when>
+               		<c:otherwise>
+               		<!-- loginned -->
+               			<li><a href="userDetail.mc?email=${email }">${name }ดิ</a>
+	                  	<li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
+	                 	<li>
+	                    <a href="cart.mc" class="site-cart">
+	                      <span class="icon icon-shopping_cart"></span>
+	                      <span class="count">2</span>
+	                    </a>
+	                  	</li> 
+               		</c:otherwise>
+               	</c:choose>
 									<li class="d-inline-block d-md-none ml-md-0"><a href="#"
 										class="site-menu-toggle js-menu-toggle"><span
 											class="icon-menu"></span></a></li>
@@ -114,20 +134,20 @@
 				<div class="row mb-5">
 					<div class="col-md-9 order-2">
 
-					<!-- productlist.jsp -->
-						
-							<c:choose>
-								<c:when test="${plist == null }">
-									<jsp:include page="noneproduct.jsp"></jsp:include>
-								</c:when>
+						<!-- productlist.jsp -->
 
-								<c:otherwise>
-									<jsp:include page="${listprint }.jsp" />
-								</c:otherwise>
-							</c:choose>
+						<c:choose>
+							<c:when test="${plist == null }">
+								<jsp:include page="noneproduct.jsp"></jsp:include>
+							</c:when>
 
-					
-						
+							<c:otherwise>
+								<jsp:include page="${listprint }.jsp" />
+							</c:otherwise>
+						</c:choose>
+
+
+
 					</div>
 					<!-- CATEGORIES -->
 					<div class="col-md-3 order-1 mb-5 mb-md-0">
@@ -140,9 +160,10 @@
 										<li><a href="#">Menu Two</a></li>
 										<li><a href="#">Menu Three</a></li>
 									</ul></li>
-										
-								<li class="has-children"><a href="shopcategory.mc" class="d-flex"><span>Women</span>
-										<span class="text-black ml-auto">{$ }</span></a></li>
+
+								<li class="has-children"><a href="shopcategory.mc"
+									class="d-flex"><span>Women</span> <span
+										class="text-black ml-auto">{$ }</span></a></li>
 								<li class="has-children"><a href="#" class="d-flex"><span>Children</span>
 										<span class="text-black ml-auto">{$ }</span></a></li>
 							</ul>
@@ -341,6 +362,8 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/aos.js"></script>
 
+	    <script src="https://kit.fontawesome.com/14d7f3870b.js" crossorigin="anonymous"></script>
+	
 	<script src="js/main.js"></script>
 
 </body>

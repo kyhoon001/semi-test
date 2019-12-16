@@ -48,14 +48,28 @@
 					<div class="col-6 col-md-4 order-3 order-md-3 text-right">
 						<div class="site-top-icons">
 							<ul>
-								<li><a href="#"><span class="icon icon-person"></span></a></li>
-								<li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-								<li><a href="cart.html" class="site-cart"> <span
-										class="icon icon-shopping_cart"></span> <span class="count">2</span>
-								</a></li>
-								<li class="d-inline-block d-md-none ml-md-0"><a href="#"
-									class="site-menu-toggle js-menu-toggle"><span
-										class="icon-menu"></span></a></li>
+									<c:choose>
+               		<c:when test="${email == null }">
+               		<!-- Not loginned -->
+               			<li><a href="login.mc"><span class="icon icon-person"></span></a></li>
+	                 	<li>
+	                    <a href="cart.mc" class="site-cart">
+	                      <span class="icon icon-shopping_cart"></span>
+	                    </a>
+	                  	</li> 
+               		</c:when>
+               		<c:otherwise>
+               		<!-- loginned -->
+               			<li><a href="userDetail.mc?email=${email }">${name }¥‘</a>
+	                  	<li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
+	                 	<li>
+	                    <a href="cart.mc" class="site-cart">
+	                      <span class="icon icon-shopping_cart"></span>
+	                      <span class="count">2</span>
+	                    </a>
+	                  	</li> 
+               		</c:otherwise>
+               	</c:choose>
 							</ul>
 						</div>
 					</div>
@@ -85,10 +99,10 @@
 							<li><a href="#">Menu Two</a></li>
 							<li><a href="#">Menu Three</a></li>
 						</ul></li>
-					<li class="active"><a href="shop.html">Shop</a></li>
+					<li class="active"><a href="shop.mc">Shop</a></li>
 					<li><a href="#">Catalogue</a></li>
 					<li><a href="#">New Arrivals</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="contact.mc">Contact</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -108,7 +122,7 @@
 
 	<div class="site-section">
 		<div class="container">
-			<div class="row">
+			
 
 				<c:choose>
 					<c:when test="${dbproduct == null }">
@@ -147,7 +161,7 @@
             <p><a href="cart.mc" class="buy-now btn btn-sm btn-primary">¿ÂπŸ±∏¥œ</a></p>
 
           </div>-->
-			</div>
+			
 		</div>
 	</div>
 
@@ -324,4 +338,6 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
 
+	    <script src="https://kit.fontawesome.com/14d7f3870b.js" crossorigin="anonymous"></script>
+	
   <script src="js/main.js"></script>

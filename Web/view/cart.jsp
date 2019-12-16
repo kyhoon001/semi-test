@@ -29,6 +29,7 @@
 <script src="js/aos.js"></script>
 <script src="js/main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	    <script src="https://kit.fontawesome.com/14d7f3870b.js" crossorigin="anonymous"></script>
 <!--  CART LIST PART -->
 
 <!-- CART LIST PART END -->
@@ -63,10 +64,28 @@
 						<div class="col-6 col-md-4 order-3 order-md-3 text-right">
 							<div class="site-top-icons">
 								<ul>
-									<li><a href="#"><span class="icon icon-person"></span></a></li>
-									<li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-									<li><a href="cart.mc" class="site-cart"> <span
-											class="icon icon-shopping_cart"></span>
+									<c:choose>
+               		<c:when test="${email == null }">
+               		<!-- Not loginned -->
+               			<li><a href="login.mc"><span class="icon icon-person"></span></a></li>
+	                 	<li>
+	                    <a href="cart.mc" class="site-cart">
+	                      <span class="icon icon-shopping_cart"></span>
+	                    </a>
+	                  	</li> 
+               		</c:when>
+               		<c:otherwise>
+               		<!-- loginned -->
+               			<li><a href="userDetail.mc?email=${email }">${name }ดิ</a>
+	                  	<li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
+	                 	<li>
+	                    <a href="cart.mc" class="site-cart">
+	                      <span class="icon icon-shopping_cart"></span>
+	                      <span class="count">2</span>
+	                    </a>
+	                  	</li> 
+               		</c:otherwise>
+               	</c:choose>
 											 <c:choose>
 												<c:when test="${count == null }">
 												</c:when>
@@ -110,7 +129,7 @@
 								<li><a href="#">Menu Two</a></li>
 								<li><a href="#">Menu Three</a></li>
 							</ul></li>
-						<li><a href="main.mc">Shop</a></li>
+						<li><a href="shop.mc">Shop</a></li>
 						<li><a href="#">Catalogue</a></li>
 						<li><a href="#">New Arrivals</a></li>
 						<li><a href="contact.mc">Contact</a></li>

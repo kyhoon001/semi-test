@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.frame.ShopDao;
 import com.mapper.ShopListMapper;
-import com.mapper.ShopMapper;
-import com.vo.CategoryVO;
 import com.vo.ProductVO;
 
 @Repository("shoplistdao")

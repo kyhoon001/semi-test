@@ -1,7 +1,5 @@
 package com.controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.comparator.ComparatorNameAsc;
-import com.comparator.ComparatorNameDesc;
-import com.comparator.ComparatorPriceAsc;
-import com.comparator.ComparatorPriceDesc;
 import com.frame.Service;
-import com.shop.ShopService;
 import com.vo.ProductVO;
 
 @Controller
