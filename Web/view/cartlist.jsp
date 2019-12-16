@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.magnific-popup.min.js"></script>
@@ -251,7 +249,7 @@ $('.js-btn-plus').on('click', function (e) {
 						<div class="row">
 							<div class="col-md-12">
 								<button class="btn btn-primary btn-lg py-3 btn-block"
-									onclick="window.location='checkout.html'">Proceed To
+									onclick="window.location='checkout.mc?email=${email }'">Proceed To
 									Checkout</button>
 							</div>
 						</div>
