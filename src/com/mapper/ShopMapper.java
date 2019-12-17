@@ -13,6 +13,8 @@ public interface ShopMapper {
 	public ArrayList<ProductVO> selectall();
 	public void insertCate(CategoryVO obj);
 	public ProductVO pick(int obj);
+	public void minusamount(String obj);
+	public void plussoldamount(String obj);
 }
 
 

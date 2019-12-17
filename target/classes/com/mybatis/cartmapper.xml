@@ -23,6 +23,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE BASKET_ID=#{basket_id}
 	</delete>
 	
+	<delete id="clear" parameterType="cart"> <!--  결제시 장바구니 다 지움  -->
+		DELETE FROM CART
+		WHERE EMAIL=#{email}
+	</delete>
+	
+	
+	
 	<select id="select" parameterType="cart" 
 	resultType="cart">
 		SELECT * FROM CART
@@ -30,13 +37,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	
+	
+	
 	<select id="selectall" resultType="cartproduct"> <!-- 해당 email의 모든 장바구니 조회 -->
-	<!-- 
-		SELECT * FROM PRODUCT
-		WHERE PRODUCT_ID IN (
-		SELECT PRODUCT_ID FROM CART
-		WHERE EMAIL=#{email})
-		-->		
+	
 		
 		select * from product p inner join cart c
 		on p.PRODUCT_ID=c.PRODUCT_ID

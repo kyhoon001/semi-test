@@ -31,7 +31,6 @@ public class ShopController {
 			System.out.println(service.pick(product_id));
 
 			ProductVO list = service.pick(product_id);
-			System.out.println(list);
 			mav.addObject("dbproduct",list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

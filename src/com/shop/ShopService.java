@@ -53,6 +53,7 @@ public class ShopService implements Service<String, ProductVO> {
 		return dao.pick(obj);
 	}
 
+
 	
 	
 //	public ArrayList<ProductVO> getDescName() throws Exception {

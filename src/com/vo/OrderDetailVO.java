@@ -1,10 +1,18 @@
 package com.vo;
 
 public class OrderDetailVO {
+	String orderdetail_id;
 	String order_id;
 	int product_id;
 	int count;
-	String orderdetail_id;
+	
+	
+	public OrderDetailVO(String order_id, int product_id, int count) {
+		super();
+		this.order_id = order_id;
+		this.product_id = product_id;
+		this.count = count;
+	}
 	public String getOrder_id() {
 		return order_id;
 	}

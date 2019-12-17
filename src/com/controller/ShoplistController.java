@@ -51,17 +51,10 @@ public class ShoplistController {
 			
 				 input = new UserInput(pg.getStartIndex(),pg.getEndIndex());
 				 list = service.getall(input);
-				 for(ProductVO data : list)
-//				 	System.out.println(data);
-				 System.out.println(input.getStart_index());
-				 System.out.println(input.getEnd_index());
-				 System.out.println(pg.getStartIndex());
-				 System.out.println(pg.getEndIndex());
 			}
 		
 			page.add(pg);
 			mv.addObject("plist", list);
-			System.out.println(list);
 			mv.addObject("pagination", page);
 			mv.addObject("listprint", "productlist");
 

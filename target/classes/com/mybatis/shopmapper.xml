@@ -18,8 +18,26 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 		UPDATE PRODUCT
 		SET PRICE=#{price},NAME=#{name},STOCK=#{stock},IMG= #{img}, CATEGORY_ID = #{category_id}, SOLDAMOUNT= #{soldamount}, DESCRIPTION = #{description} 
-		WHERE ID=#{id}
+		WHERE PRODUCT_ID=#{product_id}
 	</update>
+	
+	<update id="minusamount" parameterType="product">
+	
+		UPDATE PRODUCT
+		SET AMOUNT = AMOUNT - 1 
+		WHERE PRODUCT_ID=#{product_id}
+	</update>
+	
+	<update id="plussoldamount" parameterType="product">
+	
+		UPDATE PRODUCT
+		SET SOLDAMOUNT = SOLDAMOUNT + 1 
+		WHERE PRODUCT_ID=#{product_id}
+	</update>
+	
+	
+	
+	
 	
 	<delete id="delete" parameterType="String">
 		DELETE FROM PRODUCT

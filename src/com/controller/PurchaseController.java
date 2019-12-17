@@ -53,7 +53,6 @@ public class PurchaseController {
 			
 			mav.addObject("plist",list);
 			mav.addObject("total",total);
-			System.out.println(list.toString());
 //			mav.addObject("cartlist", "cartlist");
 //			mav.addObject("listamount", list.size()); 
 		} catch (Exception e) {

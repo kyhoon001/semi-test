@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import com.frame.CartDao;
 import com.frame.CartService;
+import com.vo.CartProductVO;
 import com.vo.CartVO;
 
 
@@ -36,7 +37,7 @@ public class CartServiceImpl implements CartService<String, CartVO> {
 	}
 
 	@Override
-	public ArrayList<CartVO> getAll(String k) throws Exception {
+	public ArrayList<CartProductVO> getAll(String k) throws Exception {
 		return dao.selectAll(k);
 	}
 
@@ -56,6 +57,12 @@ public class CartServiceImpl implements CartService<String, CartVO> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void clear(String k) throws Exception {
+		dao.clear(k);
+	}
+
 
 
 }

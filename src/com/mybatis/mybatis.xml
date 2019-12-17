@@ -16,6 +16,10 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		alias="cartproduct"/>
 			<typeAlias type="com.vo.UserInput" 
 		alias="input"/>
+			<typeAlias type="com.vo.OrderDetailVO" 
+		alias="orderdetail"/>
+			<typeAlias type="com.vo.OrderVO" 
+		alias="order"/>
 	</typeAliases>
 		
 	
@@ -25,7 +29,7 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<mapper resource="com/mybatis/cartmapper.xml"/>
 		<mapper resource="com/mybatis/categorymapper.xml"/>
 		<mapper resource="com/mybatis/usermapper.xml"/>
-		
+		<mapper resource="com/mybatis/ordermapper.xml"/>
 		
 	</mappers>
 	

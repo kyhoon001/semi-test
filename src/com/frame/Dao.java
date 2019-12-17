@@ -10,5 +10,4 @@ public interface Dao<K,V> {
 	public V select(K k) throws Exception;
 	public ArrayList<V> select() throws Exception;
 	public V pick(int obj) throws Exception;
-
 }

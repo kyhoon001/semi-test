@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.frame.CartDao;
 import com.mapper.CartMapper;
+import com.vo.CartProductVO;
 import com.vo.CartVO;
 
 @Repository("cartdao")
@@ -36,7 +37,7 @@ public class CartDaoImpl implements CartDao<String, CartVO> {
 	}
 
 	@Override
-	public ArrayList<CartVO> selectAll(String k) throws Exception {
+	public ArrayList<CartProductVO> selectAll(String k) throws Exception {
 
 		return cartmap.selectall(k);
 	}
@@ -56,6 +57,12 @@ public class CartDaoImpl implements CartDao<String, CartVO> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void clear(String k) throws Exception {
+		cartmap.clear(k);
+	}
+
 
 
 	

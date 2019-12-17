@@ -9,6 +9,14 @@ public class OrderVO {
 	Date order_date;
 	String address;
 	String order_stat;
+	
+	public OrderVO(String email, int totalprice,  String address, String order_stat) {
+		super();
+		this.email = email;
+		this.totalprice = totalprice;
+		this.address = address;
+		this.order_stat = order_stat;
+	}
 	public String getOrder_id() {
 		return order_id;
 	}

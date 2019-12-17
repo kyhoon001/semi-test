@@ -77,6 +77,7 @@ public class ShopServiceImpl implements ShopService<String, ProductVO, UserInput
 		return dao.searchcount(u);
 	}
 
+
 	
 
 	

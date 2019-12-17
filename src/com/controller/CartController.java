@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.CartService;
 import com.shop.ShopService;
+import com.vo.CartProductVO;
 import com.vo.CartVO;
 
 @Controller
@@ -24,7 +25,7 @@ public class CartController {
 	ShopService pservice;
 	
 
-	ArrayList<CartVO> list;
+	ArrayList<CartProductVO> list;
 	
 	@RequestMapping("cartAdd.mc")
 	   public String cartAdd(HttpServletRequest request) {
@@ -33,9 +34,6 @@ public class CartController {
 	      int product_id = Integer.parseInt(request.getParameter("product_id"));
 	      int count = Integer.parseInt(request.getParameter("count"));
 	      
-	      System.out.println(email);
-	      System.out.println(product_id);
-	      System.out.println(count);
 	      CartVO cart = new CartVO();
 	      
 	      cart.setProduct_id(product_id);
@@ -62,9 +60,7 @@ public class CartController {
 		//이제 여기서 selectAll에 where절에 email을 줘서 뽑아오면 되겠지.
 		
 		try {
-			System.out.println(cservice.getAll(email));
 			list = cservice.getAll(email);
-			System.out.println(list); // 나중에 지워도 됨. 들어가는지 확인 위해서 넣은것
 			mav.addObject("plist",list);
 			mav.addObject("cartlist", "cartlist");
 			mav.addObject("listamount", list.size());
@@ -111,7 +107,6 @@ public class CartController {
 	public String cartdelete(ModelAndView mav, CartVO cart, HttpServletRequest request) {
 		
 		String basket_id = request.getParameter("basket_id");
-		System.out.println(basket_id);
 		
 		try {
 			cservice.remove(basket_id);

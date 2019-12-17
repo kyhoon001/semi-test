@@ -2,14 +2,20 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mapper.CartMapper">
+<mapper namespace="com.mapper.OrderMapper">
 
 
 	
-	<insert id="insert" parameterType="cart">
-		INSERT INTO CART VALUES (
-		BASKET_ID_SEQUENCE.nextval, #{email}, #{product_id}, #{count} 
-		)	
+	<insert id="insert" parameterType="order">
+		INSERT INTO ORDERS VALUES(
+		ORDER_ID_SEQUENCE.nextval, #{email}, #{totalprice}, sysdate , #{address} , #{order_stat} 
+		)
+	</insert>
+	
+	<insert id="insertdetail" parameterType="orderdetail">
+		INSERT INTO ORDERDETAIL VALUES(
+		ORDER_DETAIL_SEQUENCE.NEXTVAL, #{order_id}, #{product_id}, #{count} 
+		)
 	</insert>
 	
 	<update id="update" parameterType="cart">
@@ -30,10 +36,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 	
-	<select id="select" parameterType="cart" 
-	resultType="cart">
-		SELECT * FROM CART
-		WHERE BASKET_ID=#{basket_id}
+	
+	<select id="getorderid" 
+	resultType="string">
+	   select Max(order_id) from orders
 	</select>
 	
 	

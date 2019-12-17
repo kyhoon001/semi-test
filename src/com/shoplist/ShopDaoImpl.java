@@ -76,6 +76,7 @@ public class ShopDaoImpl implements ShopDao<String, ProductVO, UserInput> {
 		return shopmap.searchcount(u);
 	}
 
+
 	
 
 	

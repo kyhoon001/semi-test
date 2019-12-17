@@ -21,9 +21,9 @@
 
 					<div class="form-group row">
 						<div class="col-md-12">
-							<label for="c_lname" class="text-black">Name <span
+							<label for="name" class="text-black">Name <span
 								class="text-danger">*</span></label> <input type="text"
-								class="form-control" id="c_lname" name="c_lname"
+								class="form-control" id="name" name="name"
 								value="${checkuser.name }">
 						</div>
 					</div>
@@ -32,10 +32,10 @@
 
 					<div class="form-group row">
 						<div class="col-md-12">
-							<label for="c_address" class="text-black">Address <span
+							<label for="address" class="text-black">Address <span
 								class="text-danger"></span>*
-							</label> <input type="text" class="form-control" id="c_address"
-								name="c_address" placeholder="Street address"
+							</label> <input type="text" class="form-control" id="address"
+								name="address" placeholder="Street address"
 								value="${checkuser.address }">
 						</div>
 					</div>
@@ -44,19 +44,22 @@
 
 					<div class="form-group row">
 						<div class="col-md-12">
-							<label for="c_email_address" class="text-black">Email
+							<label for="email" class="text-black">Email
 								Address <span class="text-danger"></span>*
-							</label> <input type="text" class="form-control" id="c_email_address"
-								name="c_email_address" value="${checkuser.email }" readonly>
+							</label> <input type="text" class="form-control" id="email"
+								name="email" value="${checkuser.email }" readonly>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-md-12">
-							<label for="c_phone" class="text-black">Phone <span
+							<label for="phone" class="text-black">Phone <span
 								class="text-danger"></span>*
-							</label> <input type="text" class="form-control" id="c_phone"
-								name="c_phone" placeholder="Phone Number"
+							</label> <input type="text" class="form-control" id="phone"
+								name="phone" placeholder="Phone Number"
 								value="${checkuser.phone }">
+								<input  type="hidden"  class="form-control" id="totalprice"
+								name="totalprice" placeholder="totalprice"
+								value="${total }" >
 						</div>
 					</div>
 
@@ -79,12 +82,23 @@
 								</thead>
 								<tbody>
 									<c:forEach var="p" items= "${plist }" >
+									
+								
+									
+									
 										<tr>
 											<td>${p.name }<strong class="mx-2">x</strong> ${p.count }
 											</td>
 											<td>
 											$${p.count * p.price }</td>
+											
 										</tr>
+										<!--  넘겨주는 부분입니둥 
+							<input  type="hidden"  class="form-control" id="totalprice"
+								name="dd" placeholder="dd"
+								value="${checkuser.phone }" >
+									<!--  넘겨주는 부분 끝났습니둥  -->
+										
 										</c:forEach>
 									<tr>
 										<td class="text-black font-weight-bold"><strong>Order
@@ -145,10 +159,7 @@
 								</div>
 							</div>
 
-							<div class="form-group">
-								<button class="btn btn-primary btn-lg py-3 btn-block"
-									onclick="window.location='order.mc?email=${email }&totalprice=${total }'">Place Order</button>
-							</div>
+								<button class="btn btn-primary btn-lg py-3 btn-block">Place Order</button>
 
 						</div>
 					</div>

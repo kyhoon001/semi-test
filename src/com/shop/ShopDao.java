@@ -47,6 +47,7 @@ public class ShopDao implements Dao<String, ProductVO> {
 		return shopmap.pick(obj);
 	}
 
+
 	
 
 	
