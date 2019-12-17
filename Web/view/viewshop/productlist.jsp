@@ -47,7 +47,7 @@
 		<c:forEach var="p" 
 			items="${plist }">
 			
-			<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+			<div  class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 				<div class="block-4 text-center border">
 					<figure class="block-4-image">
 						<a href="shop-single.mc?id=${p.product_id}"><img src="images/${p.img }"
@@ -63,16 +63,16 @@
 					</div>
 				</div>
 			</div>
-
 		</c:forEach>
-
-		<div class="row" data-aos="fade-up" style="margin: 0 auto;">
+		</div>
+		<div class="row mb-5">
+		<div class="row" data-aos="fade-up" style=" margin: 0 auto;">
 			<div class="col-md-12 text-center">
 				<div class="site-block-27">
 					<ul>
 						<c:choose>
 							<c:when test="${page.curPage > 1}">
-								<li><a href="shop.mc?curPage=${page.curPage-1}">&lt;</a></li>
+								<li><a href="${filter }.mc?curPage=${page.curPage-1}">&lt;</a></li>
 							</c:when>
 							<c:otherwise>
 							</c:otherwise>
@@ -82,16 +82,16 @@
 							end="${page.endPage }">
 							<c:choose>
 								<c:when test="${page.curPage eq r}">
-									<li class="active"><a href="shop.mc?curPage=${r}">${r}</a></li>
+									<li class="active"><a href="${filter }.mc?curPage=${r}">${r}</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="shop.mc?curPage=${r}">${r}</a></li>
+									<li><a href="${filter }.mc?curPage=${r}">${r}</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:choose>
 							<c:when test="${page.endcheck}">
-								<li><a href="shop.mc?curPage=${page.curPage+1}">&gt;</a></li>
+								<li><a href="${filter }.mc?curPage=${page.curPage+1}">&gt;</a></li>
 							</c:when>
 							<c:otherwise>
 							</c:otherwise>
@@ -106,3 +106,4 @@
 
 	</c:forEach>
 </div>
+

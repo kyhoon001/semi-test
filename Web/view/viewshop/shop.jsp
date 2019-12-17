@@ -30,8 +30,7 @@
 	<div class="site-wrap">
 		<header class="site-navbar" role="banner">
 			<div class="site-navbar-top">
-				<div
-					 class="container">
+				<div class="container">
 					<div class="row align-items-center">
 
 						<div
@@ -55,27 +54,24 @@
 							<div class="site-top-icons">
 								<ul>
 									<c:choose>
-               		<c:when test="${email == null }">
-               		<!-- Not loginned -->
-               			<li><a href="login.mc"><span class="icon icon-person"></span></a></li>
-	                 	<li>
-	                    <a href="cart.mc" class="site-cart">
-	                      <span class="icon icon-shopping_cart"></span>
-	                    </a>
-	                  	</li> 
-               		</c:when>
-               		<c:otherwise>
-               		<!-- loginned -->
-               			<li><a href="userDetail.mc?email=${email }">${name }님</a>
-	                  	<li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
-	                 	<li>
-	                    <a href="cart.mc" class="site-cart">
-	                      <span class="icon icon-shopping_cart"></span>
-	                      <span class="count">2</span>
-	                    </a>
-	                  	</li> 
-               		</c:otherwise>
-               	</c:choose>
+										<c:when test="${email == null }">
+											<!-- Not loginned -->
+											<li><a href="login.mc"><span
+													class="icon icon-person"></span></a></li>
+											<li><a href="cart.mc" class="site-cart"> <span
+													class="icon icon-shopping_cart"></span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<!-- loginned -->
+											<li><a href="userDetail.mc?email=${email }">${name }님</a>
+											<li><a href="logout.mc"><i
+													class="fas fa-sign-out-alt"></i></a></li>
+											<li><a href="cart.mc" class="site-cart"> <span
+													class="icon icon-shopping_cart"></span> <span class="count">2</span>
+											</a></li>
+										</c:otherwise>
+									</c:choose>
 									<li class="d-inline-block d-md-none ml-md-0"><a href="#"
 										class="site-menu-toggle js-menu-toggle"><span
 											class="icon-menu"></span></a></li>
@@ -163,53 +159,43 @@
 
 								<li class="has-children"><a href="shopcategory.mc"
 									class="d-flex"><span>Women</span> <span
-										class="text-black ml-auto">{$ }</span></a></li>
+										class="text-black ml-auto"></span></a></li>
 								<li class="has-children"><a href="#" class="d-flex"><span>Children</span>
-										<span class="text-black ml-auto">{$ }</span></a></li>
+										<span class="text-black ml-auto"></span></a></li>
 							</ul>
 						</div>
 						<!--FILTER BY PRICE -->
-						<div class="border p-4 rounded mb-4">
-							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">Filter
-									by Price</h3>
-								<div id="slider-range" class="border-primary"></div>
-								<input type="text" name="text" id="amount"
-									class="form-control border-0 pl-0 bg-white" disabled="" />
-							</div>
+						<form action="search.mc" method="get">
+							<div class="border p-4 rounded mb-4">
+								<div class="mb-4">
+									<h3 class="mb-3 h6 text-uppercase text-black d-block">Filter
+										by Price</h3>
+									<div id="slider-range" class="border-primary"></div>
 
-							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
-								<label for="s_sm" class="d-flex"> <input type="checkbox"
-									id="s_sm" class="mr-2 mt-1"> <span class="text-black">Small
-										{$ }</span>
-								</label> <label for="s_md" class="d-flex"> <input
-									type="checkbox" id="s_md" class="mr-2 mt-1"> <span
-									class="text-black">Medium {$ }</span>
-								</label> <label for="s_lg" class="d-flex"> <input
-									type="checkbox" id="s_lg" class="mr-2 mt-1"> <span
-									class="text-black">Large {$ }</span>
-								</label>
-							</div>
+									<input type="text" name="search" id="amount"
+										class="form-control border-0 pl-0 bg-white" />
 
-							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">Color</h3>
-								<a href="#" class="d-flex color-item align-items-center"> <span
-									class="bg-danger color d-inline-block rounded-circle mr-2"></span>
-									<span class="text-black">Red (2,429)</span>
-								</a> <a href="#" class="d-flex color-item align-items-center"> <span
-									class="bg-success color d-inline-block rounded-circle mr-2"></span>
-									<span class="text-black">Green (2,298)</span>
-								</a> <a href="#" class="d-flex color-item align-items-center"> <span
-									class="bg-info color d-inline-block rounded-circle mr-2"></span>
-									<span class="text-black">Blue (1,075)</span>
-								</a> <a href="#" class="d-flex color-item align-items-center"> <span
-									class="bg-primary color d-inline-block rounded-circle mr-2"></span>
-									<span class="text-black">Purple (1,075)</span>
-								</a>
-							</div>
+								</div>
 
-						</div>
+
+								<div class="mb-4">
+									<h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
+									<label for="s_sm" class="d-flex"> <input
+										type="checkbox" id="s_sm" class="mr-2 mt-1"> <span
+										class="text-black">보드 {$ }</span>
+									</label> <label for="s_md" class="d-flex"> <input
+										type="checkbox" id="s_md" class="mr-2 mt-1"> <span
+										class="text-black">쉴드 {$ }</span>
+									</label> <label for="s_lg" class="d-flex"> <input
+										type="checkbox" id="s_lg" class="mr-2 mt-1"> <span
+										class="text-black">센서 {$ }</span>
+									</label>
+								</div>
+							<input type="submit" value= "search">
+				
+
+							</div>
+						</form>
 					</div>
 				</div>
 
@@ -230,7 +216,7 @@
 										</figure>
 										<div class="text">
 											<span class="text-uppercase">Collections</span>
-											<h3>Women</h3>
+											<h3>아두이노</h3>
 										</div>
 									</a>
 								</div>
@@ -242,7 +228,7 @@
 										</figure>
 										<div class="text">
 											<span class="text-uppercase">Collections</span>
-											<h3>Children</h3>
+											<h3>라즈베리 파이</h3>
 										</div>
 									</a>
 								</div>
@@ -254,7 +240,7 @@
 										</figure>
 										<div class="text">
 											<span class="text-uppercase">Collections</span>
-											<h3>Men</h3>
+											<h3>센서</h3>
 										</div>
 									</a>
 								</div>
@@ -362,8 +348,9 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/aos.js"></script>
 
-	    <script src="https://kit.fontawesome.com/14d7f3870b.js" crossorigin="anonymous"></script>
-	
+	<script src="https://kit.fontawesome.com/14d7f3870b.js"
+		crossorigin="anonymous"></script>
+
 	<script src="js/main.js"></script>
 
 </body>

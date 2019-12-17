@@ -53,15 +53,15 @@ public class ShopDaoImpl implements ShopDao<String, ProductVO, UserInput> {
 	}
 
 	@Override
-	public ArrayList<ProductVO> selectall(UserInput u) throws Exception {
+	public ArrayList<ProductVO> selectallnameasc(UserInput u) throws Exception {
 		
-		return shopmap.selectall(u);
+		return shopmap.selectallnameasc(u);
 	}
 
 	@Override
-	public ArrayList<ProductVO> search(UserInput u) throws Exception {
+	public ArrayList<ProductVO> searchnameasc(UserInput u) throws Exception {
 		
-		return shopmap.search(u);
+		return shopmap.searchnameasc(u);
 	}
 
 	@Override
@@ -76,32 +76,43 @@ public class ShopDaoImpl implements ShopDao<String, ProductVO, UserInput> {
 		return shopmap.searchcount(u);
 	}
 
+	@Override
+	public ArrayList<ProductVO> selectallnamedesc(UserInput u) throws Exception {
+		
+		return shopmap.selectallnamedesc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> selectallpriceasc(UserInput u) throws Exception {
+
+		return shopmap.selectallpriceasc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> selectallpricedesc(UserInput u) throws Exception {
+	
+		return shopmap.selectallpricedesc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchnamedesc(UserInput u) throws Exception {
+		
+		return shopmap.searchnamedesc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchpriceasc(UserInput u) throws Exception {
+	
+		return shopmap.searchpriceasc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchpricedesc(UserInput u) throws Exception {
+		
+		return shopmap.searchpricedesc(u);
+	}
 
 	
 
-	
-	
-
-	
-//	
-//	public ArrayList<ProductVO> selectDescName() throws Exception {
-//
-//		return shopmap.selectdescname();
-//	}
-//
-//	public ArrayList<ProductVO> selectAscName() throws Exception {
-//
-//		return shopmap.selectascname();
-//	}
-//
-//	public ArrayList<ProductVO> selectDescPrice() throws Exception {
-//
-//		return shopmap.selectdescprice();
-//	}
-//	
-//	public ArrayList<ProductVO> selectAscPrice() throws Exception {
-//
-//		return shopmap.selectascprice();
-//	}
 
 }

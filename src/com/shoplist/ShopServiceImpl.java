@@ -54,18 +54,6 @@ public class ShopServiceImpl implements ShopService<String, ProductVO, UserInput
 	}
 
 	@Override
-	public ArrayList<ProductVO> getall(UserInput u) throws Exception {
-	
-		return dao.selectall(u);
-	}
-
-	@Override
-	public ArrayList<ProductVO> searching(UserInput u) throws Exception {
-	
-		return dao.search(u);
-	}
-
-	@Override
 	public int getcount() throws Exception {
 	
 		return dao.selectallcount();
@@ -77,31 +65,54 @@ public class ShopServiceImpl implements ShopService<String, ProductVO, UserInput
 		return dao.searchcount(u);
 	}
 
+	@Override
+	public ArrayList<ProductVO> getallnameasc(UserInput u) throws Exception {
+		
+		return dao.selectallnameasc(u);
+	}
 
-	
+	@Override
+	public ArrayList<ProductVO> getallnamedesc(UserInput u) throws Exception {
+		
+		return dao.selectallnamedesc(u);
+		
+	}
 
+	@Override
+	public ArrayList<ProductVO> getallpriceasc(UserInput u) throws Exception {
+		
+		return dao.selectallpriceasc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> getallpricedesc(UserInput u) throws Exception {
 	
-	
-//	public ArrayList<ProductVO> getDescName() throws Exception {
-//		
-//		return dao.selectDescName();
-//	}
-//	
-//
-//	public ArrayList<ProductVO> getDescPrice() throws Exception {
-//		
-//		return dao.selectDescPrice();
-//	}
-//	
-//	public ArrayList<ProductVO> getAscPrice() throws Exception {
-//		
-//		return dao.selectAscPrice();
-//	}
-//
-//	@Override
-//	public ArrayList<ProductVO> getAscName() throws Exception {
-//		// TODO Auto-generated method stub
-//		return dao.selectAscName();
-//	}
+		return dao.selectallpricedesc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchingnameasc(UserInput u) throws Exception {
+		
+		return dao.searchnameasc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchingnamedesc(UserInput u) throws Exception {
+		
+		return dao.searchnamedesc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchingpriceasc(UserInput u) throws Exception {
+
+		return dao.searchpriceasc(u);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchingpricedesc(UserInput u) throws Exception {
+		
+		return dao.searchpricedesc(u);
+	}
+
 
 }

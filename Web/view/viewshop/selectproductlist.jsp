@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script>
-
-
+	
 </script>
 
 
@@ -32,15 +31,16 @@
 						class="btn btn-secondary btn-sm dropdown-toggle"
 						id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-						<a class="dropdown-item" href="ascname.mc?curPage=${page.curPage}&search=${search}">Name,
-							A to Z</a> <a class="dropdown-item"
-							href="descname.mc?curPage=${page.curPage}&search=${search}">Name, Z to A</a>
+						<a class="dropdown-item"
+							href="ascname.mc?curPage=1&search=${search}">Name, A to Z</a> <a
+							class="dropdown-item"
+							href="descname.mc?curPage=1&search=${search}">Name, Z to A</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item"
-							href="ascprice.mc?curPage=${page.curPage}&search=${search}">Price, low to high</a>
-						<a class="dropdown-item"
-							href="descprice.mc?curPage=${page.curPage}&search=${search}">Price,
-							high to low</a>
+							href="ascprice.mc?curPage=1&search=${search}">Price, low to
+							high</a> <a class="dropdown-item"
+							href="descprice.mc?curPage=1&search=${search}">Price, high to
+							low</a>
 					</div>
 				</div>
 			</div>
@@ -51,9 +51,7 @@
 
 <div class="row mb-5">
 	<c:forEach var="page" items="${pagination }">
-		<c:forEach var="p" begin="${page.startIndex}" end="${page.endIndex}"
-			items="${plist }">
-
+		<c:forEach var="p" items="${plist }">
 			<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 				<div class="block-4 text-center border">
 					<figure class="block-4-image">
@@ -72,7 +70,8 @@
 			</div>
 
 		</c:forEach>
-
+		</div>
+		<div class="row mb-5">
 		<div class="row" data-aos="fade-up" style="margin: 0 auto;">
 			<div class="col-md-12 text-center">
 				<div class="site-block-27">
@@ -80,7 +79,7 @@
 						<c:choose>
 							<c:when test="${page.curPage > 1}">
 								<li><a
-									href="search.mc?curPage=${page.curPage-1}&search=${search}">&lt;</a></li>
+									href="${filter }.mc?curPage=${page.curPage-1}&search=${search}">&lt;</a></li>
 							</c:when>
 							<c:otherwise>
 							</c:otherwise>
@@ -91,17 +90,17 @@
 							<c:choose>
 								<c:when test="${page.curPage eq r}">
 									<li class="active"><a
-										href="search.mc?curPage=${r}&search=${search}">${r}</a></li>
+										href="${filter }.mc?curPage=${r}&search=${search}">${r}</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="search.mc?curPage=${r}&search=${search}">${r}</a></li>
+									<li><a href="${filter }.mc?curPage=${r}&search=${search}">${r}</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:choose>
 							<c:when test="${page.endcheck}">
 								<li><a
-									href="search.mc?curPage=${page.curPage+1}&search=${search}">&gt;</a></li>
+									href="${filter }.mc?curPage=${page.curPage+1}&search=${search}">&gt;</a></li>
 							</c:when>
 							<c:otherwise>
 							</c:otherwise>

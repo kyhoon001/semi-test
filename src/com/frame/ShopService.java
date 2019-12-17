@@ -17,9 +17,15 @@ public interface ShopService<K, V, U> extends Service<K, V> {
 
 	public V get(K k) throws Exception;
 
-	public ArrayList<V> getall(U u) throws Exception;
+	public ArrayList<V> getallnameasc(U u) throws Exception;
+	public ArrayList<V> getallnamedesc(U u) throws Exception;
+	public ArrayList<V> getallpriceasc(U u) throws Exception;
+	public ArrayList<V> getallpricedesc(U u) throws Exception;
 
-	public ArrayList<V> searching(U u) throws Exception;
+	public ArrayList<V> searchingnameasc(U u) throws Exception;
+	public ArrayList<V> searchingnamedesc(U u) throws Exception;
+	public ArrayList<V> searchingpriceasc(U u) throws Exception;
+	public ArrayList<V> searchingpricedesc(U u) throws Exception;
 	
 	public int getcount()throws Exception;
 	public int searchingcount(U u)throws Exception;

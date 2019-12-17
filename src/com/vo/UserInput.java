@@ -35,6 +35,11 @@ public class UserInput {
 		this.end_index = end_index;
 	
 	}
+	
+	public UserInput(String search) {
+		super();
+		this.search = search;
+	}
 
 
 	public String getSearch() {
