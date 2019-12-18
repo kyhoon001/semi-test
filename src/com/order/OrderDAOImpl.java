@@ -10,8 +10,11 @@ import com.frame.OrderDao;
 import com.mapper.CartMapper;
 import com.mapper.OrderMapper;
 import com.mapper.ShopMapper;
+import com.vo.CartProductVO;
+import com.vo.CartVO;
 import com.vo.OrderDetailVO;
 import com.vo.OrderVO;
+import com.vo.ProductVO;
 
 @Repository("orderdao")
 public class OrderDAOImpl implements OrderDao<String, OrderVO> {
@@ -60,8 +63,7 @@ public class OrderDAOImpl implements OrderDao<String, OrderVO> {
 
 
 	public ArrayList<OrderVO> selectAll(String k) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return ordermap.selectall(k);
 	}
 
 	public int count(String k) throws Exception {
@@ -73,12 +75,12 @@ public class OrderDAOImpl implements OrderDao<String, OrderVO> {
 		return ordermap.getorderid();
 	}
 	
-	public void minusamount(String k) throws Exception {
-		shopmap.minusamount(k);
+	public void minusamount(CartProductVO obj) {
+		ordermap.minusamount(obj);
 	}
 
-	public void plussoldamount(String k) throws Exception {
-		shopmap.plussoldamount(k);
+	public void plussoldamount(CartProductVO obj) throws Exception {
+		ordermap.plussoldamount(obj);
 	}
 
 	@Override
@@ -90,6 +92,21 @@ public class OrderDAOImpl implements OrderDao<String, OrderVO> {
 	@Override
 	public void insertdetail(OrderDetailVO v) throws Exception {
 		ordermap.insertdetail(v);
+	}
+
+	@Override
+	public int oinsert(OrderVO v) throws Exception {
+		return ordermap.oinsert(v);
+	}
+
+	@Override
+	public ArrayList<OrderDetailVO> selectdetail(String k) throws Exception {
+		return ordermap.selectdetail(k);
+	}
+
+	@Override
+	public ProductVO getproductinfo(int obj) throws Exception {
+		return ordermap.getproductinfo(obj);
 	}
 
 }

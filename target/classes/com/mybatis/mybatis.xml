@@ -20,6 +20,8 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		alias="orderdetail"/>
 			<typeAlias type="com.vo.OrderVO" 
 		alias="order"/>
+		<typeAlias type="com.vo.OrderListVO" 
+		alias="orderlist"/>
 	</typeAliases>
 		
 	

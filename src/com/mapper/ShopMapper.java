@@ -2,6 +2,7 @@ package com.mapper;
 
 import java.util.ArrayList;
 
+import com.vo.CartVO;
 import com.vo.CategoryVO;
 import com.vo.ProductVO;
 
@@ -13,8 +14,6 @@ public interface ShopMapper {
 	public ArrayList<ProductVO> selectall();
 	public void insertCate(CategoryVO obj);
 	public ProductVO pick(int obj);
-	public void minusamount(String obj);
-	public void plussoldamount(String obj);
 }
 
 

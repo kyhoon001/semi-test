@@ -28,7 +28,6 @@ public class ShoplistController {
 			int count = service.getcount();
 			Pagination pg = new Pagination(count, 1);
 			UserInput input = new UserInput(pg.getStartIndex(), pg.getEndIndex());
-			System.out.println(input);
 			ArrayList<ProductVO> list = service.getallnameasc(input);
 			ArrayList<Pagination> page = new ArrayList<Pagination>();
 
@@ -39,7 +38,6 @@ public class ShoplistController {
 
 				input = new UserInput(pg.getStartIndex(), pg.getEndIndex());
 				list = service.getallnameasc(input);
-				System.out.println(input);
 		
 			}
 

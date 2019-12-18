@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		CATEGORY_ID =
 		#{category_id}, SOLDAMOUNT= #{soldamount}, DESCRIPTION =
 		#{description}
-		WHERE ID=#{id}
+		WHERE PRODUCT_ID=#{product_id}
 	</update>
 
 	<delete id="delete" parameterType="String">
@@ -120,7 +120,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="select" parameterType="String" resultType="product">
 		SELECT *
-		FROM PRODUCT WHERE CATEGORY_ID=#{category_id}
+		FROM PRODUCT WHERE PRODUCT_ID=#{product_id}
 	</select>
 
 

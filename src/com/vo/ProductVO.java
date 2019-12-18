@@ -1,5 +1,7 @@
 package com.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductVO {
 	private int product_id;
 	private String name;
@@ -10,13 +12,26 @@ public class ProductVO {
 	private int soldamount;
 	private String description;
 	private int rm;
-	
+	MultipartFile mf;
 	public ProductVO() {
 		
 	}
 	
+	public ProductVO(int product_id, String name, int price, int stock, String img, 
+			String description, MultipartFile mf) {
+		super();
+		this.product_id = product_id;
+		this.name = name;
+		this.price = price;
+		this.stock = stock;
+		this.img = img;
+		this.description = description;
+		this.mf =mf;
+	}
+	
+	
 	public ProductVO(int product_id, String name, int price, int stock, String img, int category_id, int soldamount,
-			String description, int rm) {
+			String description, int rm, MultipartFile mf) {
 		super();
 		this.product_id = product_id;
 		this.name = name;
@@ -27,6 +42,17 @@ public class ProductVO {
 		this.soldamount = soldamount;
 		this.description = description;
 		this.rm = rm;
+		this.mf =mf;
+	}
+	
+	
+
+	public MultipartFile getMf() {
+		return mf;
+	}
+
+	public void setMf(MultipartFile mf) {
+		this.mf = mf;
 	}
 
 	public int getRm() {

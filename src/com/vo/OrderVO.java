@@ -3,7 +3,7 @@ package com.vo;
 import java.util.Date;
 
 public class OrderVO {
-	String order_id;
+	int order_id;
 	String email;
 	int totalprice;
 	Date order_date;
@@ -11,16 +11,15 @@ public class OrderVO {
 	String order_stat;
 	
 	public OrderVO(String email, int totalprice,  String address, String order_stat) {
-		super();
 		this.email = email;
 		this.totalprice = totalprice;
 		this.address = address;
 		this.order_stat = order_stat;
 	}
-	public String getOrder_id() {
+	public int getOrder_id() {
 		return order_id;
 	}
-	public void setOrder_id(String order_id) {
+	public void setOrder_id(int order_id) {
 		this.order_id = order_id;
 	}
 	public String getEmail() {
@@ -58,8 +57,7 @@ public class OrderVO {
 		return "OrderVO [order_id=" + order_id + ", email=" + email + ", totalprice=" + totalprice + ", order_date="
 				+ order_date + ", address=" + address + ", order_stat=" + order_stat + "]";
 	}
-	public OrderVO(String order_id, String email, int totalprice, Date order_date, String address, String order_stat) {
-		super();
+	public OrderVO(int order_id, String email, int totalprice, Date order_date, String address, String order_stat) {
 		this.order_id = order_id;
 		this.email = email;
 		this.totalprice = totalprice;
@@ -68,7 +66,6 @@ public class OrderVO {
 		this.order_stat = order_stat;
 	}
 	public OrderVO() {
-		super();
 	}
 	
 	

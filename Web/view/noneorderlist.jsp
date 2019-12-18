@@ -74,9 +74,8 @@ canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar {
 	font-weight: 300;
 	padding: 1em 0;
 }
-
-#t1 {
-	text-align: center;
+#t1{
+	 text-align :center;
 }
 </style>
 <div id="page-wrapper">
@@ -86,26 +85,23 @@ canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar {
 			<div class="bs-example4" data-example-id="contextual-table">
 				<table class="table">
 					<thead>
-						<tr id="t1">
-							<th>주문 번호</th>
+						<tr id = "t1">
+							<th>#</th>
 							<th>주문 일자</th>
+							<th>주문 번호</th>
 							<th>품목</th>
 							<th>배송 상태</th>
 							<th>결제금액</th>
-
+							
 						</tr>
 					</thead>
 					<tbody>
-
-							<c:forEach var="o" items="${olist }">
-						<tr class="active" id="t1">
-								<th scope="row">${o.order_id }</th>
-								<td>${o.order_date }</td>
-								<td><a href="orderdetail.mc?order_id=${o.order_id }">주문 상세 보기</a></td>
-								<td>${o.order_stat }</td>
-								<td>${o.totalprice }</td>
+						<tr class="active">
+							
+							<td>주문내역이 없습니다.</td>
+							
+							
 						</tr>
-							</c:forEach>
 						<!-- <tr>
 							<th scope="row">2</th>
 							<td>Column content</td>
@@ -154,10 +150,11 @@ canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar {
 							<td>Column content</td>
 							<td>Column content</td>
 						</tr> -->
-
+						
 					</tbody>
 				</table>
 			</div>
+<a href = "orderdetail.mc">주문 상세 보기</a>
 		</div>
 	</div>
 </div>

@@ -5,74 +5,130 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.mapper.OrderMapper">
 
 
-	
-	<insert id="insert" parameterType="order">
-		INSERT INTO ORDERS VALUES(
-		ORDER_ID_SEQUENCE.nextval, #{email}, #{totalprice}, sysdate , #{address} , #{order_stat} 
-		)
+
+	<!-- <insert id="insert" parameterType="order"> INSERT INTO ORDERS VALUES( 
+		ORDER_ID_SEQUENCE.nextval, #{email}, #{totalprice}, sysdate , #{address} 
+		, #{order_stat} ) </insert> -->
+
+	<insert id="oinsert" parameterType="order">
+		INSERT INTO
+		ORDERS(ORDER_ID,EMAIL,TOTALPRICE,ORDER_DATE,ADDRESS,ORDER_STAT)
+		VALUES(ORDER_ID_SEQUENCE.nextval,#{email},
+		#{totalprice}, sysdate ,
+		#{address} , #{order_stat})
+		<selectKey keyProperty="ORDER_ID" resultType="Integer"
+			order="AFTER">
+			SELECT ORDER_ID_SEQUENCE.currval FROM dual
+		</selectKey>
 	</insert>
-	
+
+
+
 	<insert id="insertdetail" parameterType="orderdetail">
-		INSERT INTO ORDERDETAIL VALUES(
-		ORDER_DETAIL_SEQUENCE.NEXTVAL, #{order_id}, #{product_id}, #{count} 
+		INSERT INTO ORDERDETAIL
+		VALUES(
+		#{order_id}, #{product_id},
+		#{count},
+		ORDER_DETAIL_SEQUENCE.NEXTVAL
 		)
 	</insert>
-	
+
 	<update id="update" parameterType="cart">
 		UPDATE CART
-		SET count=#{count} 
+		SET count=#{count}
 		WHERE BASKET_ID=#{basket_id}
 	</update>
-	
+
 	<delete id="delete" parameterType="cart">
 		DELETE FROM CART
-		WHERE BASKET_ID=#{basket_id}
+		WHERE
+		BASKET_ID=#{basket_id}
 	</delete>
-	
-	<delete id="clear" parameterType="cart"> <!--  결제시 장바구니 다 지움  -->
+
+	<delete id="clear" parameterType="cart"> <!-- 결제시 장바구니 다 지움 -->
 		DELETE FROM CART
 		WHERE EMAIL=#{email}
 	</delete>
-	
-	
-	
-	
-	<select id="getorderid" 
-	resultType="string">
-	   select Max(order_id) from orders
+
+
+
+
+	<select id="getorderid" resultType="string">
+		select Max(order_id) from
+		orders
 	</select>
-	
-	
-	
-	
-	
-	<select id="selectall" resultType="cartproduct"> <!-- 해당 email의 모든 장바구니 조회 -->
-	
-		
-		select * from product p inner join cart c
-		on p.PRODUCT_ID=c.PRODUCT_ID
-		where c.email=#{email}
-		
-		
+
+
+
+
+
+	<select id="selectall" resultType="order"> <!-- 해당 email의 모든 장바구니 조회 -->
+
+		select * from ORDERS
+		where email=#{email}
+		order by ORDER_ID desc
+
+
 	</select>
+
+
+	<select id="selectdetail" resultType="orderlist"> <!-- 해당 email의 모든 장바구니 조회 -->
+
 	
+	 select o.order_id, od.orderdetail_id, p.name,u.address,
+	 u.name, od.count,o.totalprice, o.order_stat, p.product_id
+	 
+    from ORDERS o inner join ORDERDETAIL od
+    on o.order_id = od.order_id
+    inner join product p on od.product_id = p.product_id
+    inner join users u on o.email = u.email
+    where od.order_id = #{order_id}
+
+
+	</select>
+
+
+	<update id="minusamount" parameterType="cartproduct">
 	
-	<select id="findcart_id" resultType="cart"> <!--  몇개들어있냐 -->
+		UPDATE PRODUCT
+		SET STOCK = STOCK - #{count}
+		WHERE PRODUCT_ID=#{product_id}
+	</update>
+	
+	<update id="plussoldamount" parameterType="cartproduct">
+	
+		UPDATE PRODUCT
+		SET SOLDAMOUNT = SOLDAMOUNT + #{count}
+		WHERE PRODUCT_ID=#{product_id}
+	</update>
+
+
+
+
+
+
+	<select id="getproductinfo" resultType="product">
+		select *
+		from product
+		where product_id=#{product_id}
+	</select>
+
+	<select id="findcart_id" resultType="cart"> <!-- 몇개들어있냐 -->
 		SELECT count(*) FROM CART
-		WHERE EMAIL=#{email} 
+		WHERE EMAIL=#{email}
 	</select>
-	
-	
-	<select id="cselect" resultType="cart"> <!--  장바구니 테이블 모두 검색 -->
+
+
+	<select id="cselect" resultType="cart"> <!-- 장바구니 테이블 모두 검색 -->
 		SELECT * FROM CART
 	</select>
-	
-	<select id="count" resultType="cart"> <!--  몇개들어있냐 -->
+
+	<select id="count" resultType="cart"> <!-- 몇개들어있냐 -->
 		SELECT count(*) FROM CART
-		WHERE EMAIL=#{email} 
+		WHERE EMAIL=#{email}
 	</select>
-	
-	
+
+
 </mapper>
 
 

@@ -25,18 +25,6 @@ public class MainController {
 
 	
 
-	@RequestMapping("orderlist.mc")
-	public ModelAndView orderlist(ModelAndView mav) {
-		mav.addObject("center", "orderlist");
-		mav.setViewName("main");
-		return mav;
-	}
 	
-	@RequestMapping("orderdetail.mc")
-	public ModelAndView orderdetail(ModelAndView mav) {
-		mav.addObject("center", "orderdetail");
-		mav.setViewName("main");
-		return mav;
-	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.frame.ShopDao;
 import com.mapper.ShopListMapper;
+import com.vo.CartVO;
 import com.vo.ProductVO;
 import com.vo.UserInput;
 
@@ -111,6 +112,8 @@ public class ShopDaoImpl implements ShopDao<String, ProductVO, UserInput> {
 		
 		return shopmap.searchpricedesc(u);
 	}
+
+	
 
 	
 

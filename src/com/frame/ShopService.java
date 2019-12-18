@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vo.CartVO;
+
 public interface ShopService<K, V, U> extends Service<K, V> {
 
 	@Transactional

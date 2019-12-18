@@ -28,7 +28,6 @@ public class ShopController {
 		//이제 여기서 selectAll에 where절에 email을 줘서 뽑아오면 되겠지.
 		
 		try {
-			System.out.println(service.pick(product_id));
 
 			ProductVO list = service.pick(product_id);
 			mav.addObject("dbproduct",list);

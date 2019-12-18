@@ -2,6 +2,8 @@ package com.frame;
 
 import java.util.ArrayList;
 
+import com.vo.CartVO;
+
 public interface ShopDao<K,V,U> extends Dao<K,V> {
 	
 	public void insert(V v) throws Exception;

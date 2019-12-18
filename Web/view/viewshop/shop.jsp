@@ -165,37 +165,12 @@
 							</ul>
 						</div>
 						<!--FILTER BY PRICE -->
-						<form action="search.mc" method="get">
-							<div class="border p-4 rounded mb-4">
-								<div class="mb-4">
-									<h3 class="mb-3 h6 text-uppercase text-black d-block">Filter
-										by Price</h3>
-									<div id="slider-range" class="border-primary"></div>
-
-									<input type="text" name="search" id="amount"
-										class="form-control border-0 pl-0 bg-white" />
-
-								</div>
-
-
-								<div class="mb-4">
-									<h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
-									<label for="s_sm" class="d-flex"> <input
-										type="checkbox" id="s_sm" class="mr-2 mt-1"> <span
-										class="text-black">보드 {$ }</span>
-									</label> <label for="s_md" class="d-flex"> <input
-										type="checkbox" id="s_md" class="mr-2 mt-1"> <span
-										class="text-black">쉴드 {$ }</span>
-									</label> <label for="s_lg" class="d-flex"> <input
-										type="checkbox" id="s_lg" class="mr-2 mt-1"> <span
-										class="text-black">센서 {$ }</span>
-									</label>
-								</div>
-							<input type="submit" value= "search">
-				
-
-							</div>
-						</form>
+						<c:if test="${email eq 'Admin@admin.a'}">
+							<a href="pregistergo.mc">
+								<button id="productRegister"
+									class="buy-now btn btn-sm btn-primary">상품등록</button>
+							</a>
+						</c:if>
 					</div>
 				</div>
 

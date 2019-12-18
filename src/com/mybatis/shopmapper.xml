@@ -21,19 +21,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE PRODUCT_ID=#{product_id}
 	</update>
 	
-	<update id="minusamount" parameterType="product">
-	
-		UPDATE PRODUCT
-		SET AMOUNT = AMOUNT - 1 
-		WHERE PRODUCT_ID=#{product_id}
-	</update>
-	
-	<update id="plussoldamount" parameterType="product">
-	
-		UPDATE PRODUCT
-		SET SOLDAMOUNT = SOLDAMOUNT + 1 
-		WHERE PRODUCT_ID=#{product_id}
-	</update>
+
 	
 	
 	

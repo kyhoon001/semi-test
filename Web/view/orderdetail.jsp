@@ -74,6 +74,9 @@ canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar {
 	font-weight: 300;
 	padding: 1em 0;
 }
+#t1{
+	text-align:center;
+}
 </style>
 <div id="page-wrapper">
 	<div class="graphs">
@@ -83,89 +86,34 @@ canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar {
 			<div class="table-responsive">
 				<table class="table">
 					<thead>
-						<tr>
-							<th>#</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
+						<tr id = "t1">
+							<th>주문 번호</th>
+							<th>주문상세번호</th>
+							<th>상품명</th>
+							<th>주소</th>
+							<th>받는분</th>
+							<th>수량</th>
+							<th>결제금액</th>
+							<th>결제상태</th>
+							<th>배송상태</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
+					
+							<c:forEach var="od" items="${odlist }">
+						<tr id = "t1">
+							<th scope="row">${od.order_id }</th>
+							<td>${od.orderdetail_id }</td>
+							<td>${od.product_name }</td>
+							<td>${od.user_address }</td>
+							<td>${od.user_name }</td>
+							<td>${od.count }</td>
+							<td>${od.totalprice }</td>
+							<td>ok</td>
+							<td>${od.order_stat }</td>
 						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- /.table-responsive -->
-			<div class="table-responsive">
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-							<th>Table heading</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-							<td>Table cell</td>
-						</tr>
+						</c:forEach>
+					
 					</tbody>
 				</table>
 			</div>

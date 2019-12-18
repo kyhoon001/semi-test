@@ -86,7 +86,7 @@
 										<div class="dropdown-menu"
 											aria-labelledby="dropdownMenuOffset">
 											<a class="dropdown-item" href="userDetail.mc?email=${email }">User detail</a> <a
-												class="dropdown-item" href="orderlist.mc">Orders</a> 
+												class="dropdown-item" href="orderlist.mc?email=${email }">Orders</a> 
 										</div>
 									</div>
 									</div></li>

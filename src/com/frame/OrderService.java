@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vo.CartProductVO;
+import com.vo.CartVO;
 import com.vo.OrderDetailVO;
+import com.vo.ProductVO;
 
 public interface OrderService<K,V> extends Service<K,V> {
 	@Transactional
@@ -22,4 +25,9 @@ public interface OrderService<K,V> extends Service<K,V> {
 	public int count(K k) throws Exception;
 	public void clear(K k) throws Exception;
 	public K getorderid() throws Exception;
+	public int oinsert(V v) throws Exception;
+	public ArrayList<OrderDetailVO> selectdetail(K k) throws Exception;
+	public void minusamount(CartProductVO obj)throws Exception;
+	public void plussoldamount(CartProductVO obj)throws Exception;
+	public ProductVO getproductinfo(int obj)throws Exception;
 }

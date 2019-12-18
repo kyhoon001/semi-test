@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.RequestWrapper;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +48,7 @@ public class UserController {
 		String phone = request.getParameter("phone");
 		String date = request.getParameter("b_date");
 		String sex = request.getParameter("sex");
-		//String data瑜� date ���엯�쑝濡� 蹂��솚
+		//String data�몴占� date 占쏙옙占쎌뿯占쎌몵嚥∽옙 癰귨옙占쎌넎
 		Date b_date = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -57,7 +58,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 		
-		//�씠硫붿씪 以묐났泥댄겕, user瑜� 由ы꽩�븯誘�濡� return 媛믪씠 null�씠硫� �븯�떒 肄붾뱶 �떎�뻾, null �븘�땲硫� 以묐났泥댄겕 �솗�씤 硫붿떆吏��� �븿猿� �쟾�떖
+		//占쎌뵠筌롫뗄�뵬 餓λ쵎�궗筌ｋ똾寃�, user�몴占� �뵳�뗪쉘占쎈릭沃섓옙嚥∽옙 return 揶쏅�れ뵠 null占쎌뵠筌롳옙 占쎈릭占쎈뼊 �굜遺얜굡 占쎈뼄占쎈뻬, null 占쎈툡占쎈빍筌롳옙 餓λ쵎�궗筌ｋ똾寃� 占쎌넇占쎌뵥 筌롫뗄�뻻筌욑옙占쏙옙 占쎈맙�뙼占� 占쎌읈占쎈뼎
 		user = new UserVO(email, pwd, name, address, phone, b_date, sex);
 		
 		try {
@@ -67,7 +68,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 		mav.addObject("name", user.getName());
-		mav.addObject("message", "�떂 �쉶�썝媛��엯�쓣 �솚�쁺�빀�땲�떎");
+		mav.addObject("message", "Welcome!!!!");
 		mav.setViewName("User/Register/welcome");
 		
 		return mav;
@@ -106,8 +107,8 @@ public class UserController {
 		}
 		
 		if(user==null || !pwd.equals(user.getPwd())) {
-			//main�쑝濡� 媛붿쓣 �븣 user email怨� name �뜲�씠�꽣瑜� �꽆湲곌린 �쐞�븿
-			mav.addObject("message","�씠硫붿씪 �샊�� 鍮꾨�踰덊샇媛� ��由쎈땲�떎");
+			//main占쎌몵嚥∽옙 揶쏅뗄�뱽 占쎈르 user email�⑨옙 name 占쎈쑓占쎌뵠占쎄숲�몴占� 占쎄퐜疫꿸퀗由� 占쎌맄占쎈맙
+			mav.addObject("message","No users or PWD is not corrected");
 			mav.setViewName("User/Login/login");
 			
 		}else {
@@ -159,7 +160,7 @@ public class UserController {
 		String phone = request.getParameter("phone");
 		String date = request.getParameter("b_date");
 		String sex = request.getParameter("sex");
-		//String data瑜� date ���엯�쑝濡� 蹂��솚
+		//String data�몴占� date 占쏙옙占쎌뿯占쎌몵嚥∽옙 癰귨옙占쎌넎
 		Date b_date = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -181,6 +182,26 @@ public class UserController {
 		session.invalidate();
 		
 		return "redirect:login.mc";
+	}
+	
+	@RequestMapping("userDelete.mc")
+	public ModelAndView userdelete(String email, ModelAndView mav, HttpSession session) {
+		
+		try {
+			service.remove(email);
+			mav.addObject("message", "Successfully withdrawl");
+			session.invalidate();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		mav.setViewName("User/Register/welcome");
+		
+		
+		return mav;
+		
 	}
 	
 	

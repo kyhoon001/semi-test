@@ -5,18 +5,24 @@ $(document).ready(function(){
 
 	$('#update').on('click', function(event){
 		event.preventDefault();
-		changeVis();
-	})
-
-	$('#cancel').on('click', function(event){
-		event.preventDefault();
 		let email = $('#email').val();
 		location.href = "userDetail.mc?email="+email;
 	})
 
-	$('#userDetail').on('submit',function(){
-		alert("회원정보를 수정했습니다. 다시 로그인해주세요 ");
+	$('#cancel').on('click', function(event){
+		event.preventDefault();
+		changeVis();
+		
 	})
+	
+	$('#withdrawl').on('click', function(event){
+		event.preventDefault();
+		let email = $('#email').val();
+		location.href = "userDelete.mc?email="+email;
+	})
+
+	
+	
 })
 
 function changeVis(){

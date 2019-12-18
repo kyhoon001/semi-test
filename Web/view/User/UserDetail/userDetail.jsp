@@ -209,6 +209,7 @@
 		                <button id="update">Update</button>
 		                <button id="confirm">Confirm</button>
 		                <button id="cancel">Cancel</button>
+		                <button id="withdrawl">Withdrawal</button>
 	                </div>
 	              </div>
 	            </form>

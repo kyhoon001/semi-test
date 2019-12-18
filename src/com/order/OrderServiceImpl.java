@@ -8,8 +8,11 @@ import com.frame.Dao;
 import com.frame.OrderDao;
 import com.frame.OrderService;
 import com.frame.Service;
+import com.vo.CartProductVO;
+import com.vo.CartVO;
 import com.vo.OrderDetailVO;
 import com.vo.OrderVO;
+import com.vo.ProductVO;
 
 @org.springframework.stereotype.Service("orderservice")
 public class OrderServiceImpl implements OrderService<String, OrderVO> {
@@ -53,8 +56,7 @@ public class OrderServiceImpl implements OrderService<String, OrderVO> {
 	}
 
 	public ArrayList<OrderVO> getAll(String k) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectAll(k);
 	}
 
 	public int count(String k) throws Exception {
@@ -62,12 +64,12 @@ public class OrderServiceImpl implements OrderService<String, OrderVO> {
 		return 0;
 	}
 
-	public void minusamount(String k) throws Exception {
-//		dao.minusamount(k);
+	public void minusamount(CartProductVO obj) throws Exception {
+		dao.minusamount(obj);
 	}
 
-	public void plussoldamount(String k) throws Exception {
-//		dao.plussoldamount(k);
+	public void plussoldamount(CartProductVO obj) throws Exception {
+		dao.plussoldamount(obj);
 	}
 
 	@Override
@@ -84,6 +86,21 @@ public class OrderServiceImpl implements OrderService<String, OrderVO> {
 	@Override
 	public void registerdetail(OrderDetailVO v) throws Exception {
 		dao.insertdetail(v);
+	}
+
+	@Override
+	public int oinsert(OrderVO v) throws Exception {
+		return dao.oinsert(v);
+	}
+
+	@Override
+	public ArrayList<OrderDetailVO> selectdetail(String k) throws Exception {
+		return dao.selectdetail(k);
+	}
+
+	@Override
+	public ProductVO getproductinfo(int obj) throws Exception {
+		return dao.getproductinfo(obj);
 	}
 
 	
