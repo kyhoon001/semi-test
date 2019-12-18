@@ -28,14 +28,14 @@ public class OrderController {
 
 	@Resource(name = "orderservice")
 	OrderService service;
-	
+
 	@Resource(name = "cartservice")
-	CartService<String, CartVO,CartProductVO> cservice;
-	
+	CartService<String, CartVO, CartProductVO> cservice;
+
 	@Resource(name = "shopservice")
 	Service<String, ProductVO> sservice;
-	
-	@Resource(name="uservice")
+
+	@Resource(name = "uservice")
 	Service uservice;
 
 	@RequestMapping("order.mc")
@@ -45,30 +45,40 @@ public class OrderController {
 		String address = request.getParameter("address");
 		int totalprice = Integer.parseInt(request.getParameter("totalprice"));
 		String orderstat = "shipping";
-		Date orderdate = new Date();
 		OrderVO vo = new OrderVO(email, totalprice, address, orderstat);
 		ArrayList<CartProductVO> list;
 		try {
 			int num = service.oinsert(vo);
 			list = cservice.getAll(email);
-			
-			for(int i = 0; i < list.size(); i++) {
-				String order_id = (String) service.getorderid();
-				int product_id = list.get(i).getProduct_id();
-				int count = list.get(i).getCount();
+			boolean b = true;
+			for (int i = 0; i < list.size(); i++) {
 				
-				
-				
-				OrderDetailVO od = new OrderDetailVO(order_id,product_id,count);
-				service.registerdetail(od);
-				
-				
-				service.minusamount(list.get(i));
-				service.plussoldamount(list.get(i));
-				
-				
+				CartVO cvo = cservice.get(list.get(i).getBasket_id());
+				//pid = null임.
+				int pid = cvo.getProduct_id();
+				ProductVO pv =  sservice.pick(pid);
+				if (pv.getStock() < list.get(i).getCount()) {
+					b = false;
+					System.out.println("수량부족");
+					break;
+				}
 			}
-			cservice.clear(vo.getEmail()); // 주문 완료시 그거 해당 카트 비워주는 역할.
+
+			if (b == true) {
+				for (int i = 0; i < list.size(); i++) {
+					String order_id = (String) service.getorderid();
+					int product_id = list.get(i).getProduct_id();
+					int count = list.get(i).getCount();
+
+					OrderDetailVO od = new OrderDetailVO(order_id, product_id, count);
+					service.registerdetail(od);
+
+					service.minusamount(list.get(i));
+					service.plussoldamount(list.get(i));
+
+				}
+				cservice.clear(vo.getEmail()); // 주문 완료시 그거 해당 카트 비워주는 역할.
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,7 +87,7 @@ public class OrderController {
 		return "redirect:cart.mc";
 
 	}
-	
+
 	@RequestMapping("orderlist.mc")
 	public ModelAndView orderlist(ModelAndView mav, HttpServletRequest request) {
 		ArrayList<OrderVO> list;
@@ -85,48 +95,45 @@ public class OrderController {
 		System.out.println("email : " + email);
 		try {
 			list = service.getAll(email);
-			mav.addObject("olist",list);
+			mav.addObject("olist", list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		mav.addObject("center", "orderlist");
 		mav.setViewName("main");
 		return mav;
 	}
 
-	
 	@RequestMapping("orderdetail.mc")
 	public ModelAndView orderdetail(ModelAndView mav, HttpServletRequest request) {
 		ArrayList<OrderListVO> list;
 		HttpSession session = request.getSession();
-		String email = (String)session.getAttribute("email");
+		String email = (String) session.getAttribute("email");
 		String order_id = request.getParameter("order_id");
 		System.out.println(order_id);
 		try {
 			UserVO uvo = (UserVO) uservice.get(email);
 			list = service.selectdetail(order_id);
-			for(int i = 0; i<list.size(); i++) {
-			list.get(i).setUser_address(uvo.getAddress());
-			list.get(i).setUser_name(uvo.getName());
-			
-			ProductVO pvo = sservice.pick(list.get(i).getProduct_id());
-			list.get(i).setProduct_name(pvo.getName());
-			
+			for (int i = 0; i < list.size(); i++) {
+				list.get(i).setUser_address(uvo.getAddress());
+				list.get(i).setUser_name(uvo.getName());
+
+				ProductVO pvo = sservice.pick(list.get(i).getProduct_id());
+				list.get(i).setProduct_name(pvo.getName());
+
 			}
 			System.out.println(list);
-			mav.addObject("odlist",list);
+			mav.addObject("odlist", list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		mav.addObject("center", "orderdetail");
 		mav.setViewName("main");
 		return mav;
 	}
-	
+
 }
