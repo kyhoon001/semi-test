@@ -2,7 +2,6 @@ package com.mapper;
 
 import java.util.ArrayList;
 
-import com.vo.CartVO;
 import com.vo.CategoryVO;
 import com.vo.ProductVO;
 
