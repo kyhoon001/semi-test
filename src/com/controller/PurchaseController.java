@@ -28,7 +28,7 @@ public class PurchaseController {
 	private Service service;
 	
 	@Resource(name = "cartservice")
-	CartService<String, CartProductVO> cservice;
+	CartService<String,CartVO,CartProductVO> cservice;
 	ShopService pservice;
 	
 

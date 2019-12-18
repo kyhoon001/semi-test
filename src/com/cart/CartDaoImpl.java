@@ -11,7 +11,7 @@ import com.vo.CartProductVO;
 import com.vo.CartVO;
 
 @Repository("cartdao")
-public class CartDaoImpl implements CartDao<String, CartVO> {
+public class CartDaoImpl implements CartDao<String, CartVO,CartProductVO> {
 
 	@Autowired
 	CartMapper cartmap;

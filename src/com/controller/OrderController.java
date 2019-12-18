@@ -30,7 +30,7 @@ public class OrderController {
 	OrderService service;
 	
 	@Resource(name = "cartservice")
-	CartService<String, CartVO> cservice;
+	CartService<String, CartVO,CartProductVO> cservice;
 	
 	@Resource(name = "shopservice")
 	Service<String, ProductVO> sservice;

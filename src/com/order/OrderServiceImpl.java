@@ -15,10 +15,10 @@ import com.vo.OrderVO;
 import com.vo.ProductVO;
 
 @org.springframework.stereotype.Service("orderservice")
-public class OrderServiceImpl implements OrderService<String, OrderVO> {
+public class OrderServiceImpl implements OrderService<String, OrderVO,OrderDetailVO,CartProductVO,Integer> {
 	
 	@Resource(name="orderdao")
-	OrderDao<String, OrderVO> dao;
+	OrderDao<String, OrderVO,OrderDetailVO,CartProductVO,Integer> dao;
 	
 	@Override
 	public void register(OrderVO v) throws Exception {
@@ -99,7 +99,7 @@ public class OrderServiceImpl implements OrderService<String, OrderVO> {
 	}
 
 	@Override
-	public ProductVO getproductinfo(int obj) throws Exception {
+	public ProductVO getproductinfo(Integer obj) throws Exception {
 		return dao.getproductinfo(obj);
 	}
 

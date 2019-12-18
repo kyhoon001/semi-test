@@ -17,7 +17,7 @@ import com.vo.OrderVO;
 import com.vo.ProductVO;
 
 @Repository("orderdao")
-public class OrderDAOImpl implements OrderDao<String, OrderVO> {
+public class OrderDAOImpl implements OrderDao<String, OrderVO,OrderDetailVO,CartProductVO,Integer> {
 	@Autowired
 	OrderMapper ordermap;
 	@Autowired
@@ -105,8 +105,10 @@ public class OrderDAOImpl implements OrderDao<String, OrderVO> {
 	}
 
 	@Override
-	public ProductVO getproductinfo(int obj) throws Exception {
+	public ProductVO getproductinfo(Integer obj) throws Exception {
 		return ordermap.getproductinfo(obj);
 	}
+
+	
 
 }

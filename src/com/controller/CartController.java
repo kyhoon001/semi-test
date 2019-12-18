@@ -21,8 +21,7 @@ public class CartController {
 
 
 	@Resource(name = "cartservice")
-	CartService<String, CartVO> cservice;
-	ShopService pservice;
+	CartService<String, CartVO, CartProductVO> cservice;
 	
 
 	ArrayList<CartProductVO> list;

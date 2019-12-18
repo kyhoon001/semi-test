@@ -11,10 +11,10 @@ import com.vo.CartVO;
 
 
 @org.springframework.stereotype.Service("cartservice")
-public class CartServiceImpl implements CartService<String, CartVO> {
+public class CartServiceImpl implements CartService<String, CartVO,CartProductVO> {
 	
 	@Resource(name="cartdao")
-	CartDao<String, CartVO> dao;
+	CartDao<String, CartVO,CartProductVO> dao;
 
 	@Override
 	public void register(CartVO v) throws Exception {
