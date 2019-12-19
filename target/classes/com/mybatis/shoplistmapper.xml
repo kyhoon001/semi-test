@@ -126,11 +126,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="selectallnameasc" parameterType="input"
 		resultType="product">
-		select * from 
-		(select rownum rm , p.* from 
-		(SELECT * FROM 
-		PRODUCT order by name asc) p) 
-		where rm between #{start_index} and #{end_index}
+		select * from
+		(select rownum rm , p.* from
+		(SELECT * FROM
+		PRODUCT order by name asc) p)
+		where rm between #{start_index} and
+		#{end_index}
 	</select>
 
 	<select id="selectallnamedesc" parameterType="input"
@@ -184,6 +185,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 	</select>
+
+
 
 
 

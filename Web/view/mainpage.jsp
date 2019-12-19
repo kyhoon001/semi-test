@@ -2,21 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="site-blocks-cover"
-	style="background-image: url(images/hero_1.jpg);" data-aos="fade">
+	style="background-image: url(images/main.jpg);" data-aos="fade">
 	<div class="container">
 		<div
 			class="row align-items-start align-items-md-center justify-content-end">
-			<div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-				<h1 class="mb-2">Finding Your Perfect Shoes</h1>
-				<div class="intro-text text-center text-md-left">
-					<p class="mb-4">Lorem ipsum dolor sit amet, consectetur
-						adipiscing elit. Phasellus at iaculis quam. Integer accumsan
-						tincidunt fringilla.</p>
-					<p>
-						<a href="#" class="btn btn-sm btn-primary">Shop Now</a>
-					</p>
-				</div>
-			</div>
+			
+				<h1 class="col-md-3 text-center " style ="color:white;background:black;opacity:0.8;">Shoppers</h1><br><br>
+				<h1 class="col-md-10 text-center " style ="color:white; background:black;opacity:0.8;">새로운 IoT 장비들을 만나보세요!</h1>
+			
 		</div>
 	</div>
 </div>
@@ -62,55 +55,11 @@
 	</div>
 </div>
 
-<div class="site-section site-blocks-2">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade"
-				data-aos-delay="">
-				<a class="block-2-item" href="#">
-					<figure class="image">
-						<img src="images/img10.png" alt="" class="img-fluid">
-					</figure>
-					<div class="text">
-						<span class="text-uppercase">IoT 제품 신상</span>
-						<h3>${product.name }</h3>
-					</div>
-				</a>
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade"
-				data-aos-delay="100">
-				<a class="block-2-item" href="#">
-					<figure class="image">
-						<img src="images/img3.png" alt="" class="img-fluid">
-					</figure>
-					<div class="text">
-						<span class="text-uppercase">가장 많이 찾는 제품</span>
-						<h3>${product.name }</h3>
-					</div>
-				</a>
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade"
-				data-aos-delay="200">
-				<a class="block-2-item" href="#">
-					<figure class="image">
-						<img src="images/img8.png" alt="" class="img-fluid">
-					</figure>
-					<div class="text">
-						<span class="text-uppercase">이런 제품은 어떠세요?</span>
-						<h3>${product.name }</h3>
-					</div>
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
 
 <div class="site-section block-3 site-blocks-2 bg-light">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-7 site-section-heading text-center pt-4">
-				<h2>게시판</h2>
-			</div>
+		
 		</div>
 		<div class="row">
 			<div class="col-md-12">

@@ -22,6 +22,8 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		alias="order"/>
 		<typeAlias type="com.vo.OrderListVO" 
 		alias="orderlist"/>
+		<typeAlias type="com.vo.BoardVO" alias="board" />
+		
 	</typeAliases>
 		
 	
@@ -32,7 +34,7 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<mapper resource="com/mybatis/categorymapper.xml"/>
 		<mapper resource="com/mybatis/usermapper.xml"/>
 		<mapper resource="com/mybatis/ordermapper.xml"/>
-		
+			<mapper resource="com/mybatis/boardmapper.xml"/>
 	</mappers>
 	
 </configuration>

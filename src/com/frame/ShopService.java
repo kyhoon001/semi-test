@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vo.CartVO;
+import com.vo.ProductVO;
 
 public interface ShopService<K, V, U> extends Service<K, V> {
 
@@ -31,4 +32,5 @@ public interface ShopService<K, V, U> extends Service<K, V> {
 	
 	public int getcount()throws Exception;
 	public int searchingcount(U u)throws Exception;
+	public ArrayList<ProductVO> selectcategory(K k);
 }

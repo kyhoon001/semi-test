@@ -3,6 +3,7 @@ package com.frame;
 import java.util.ArrayList;
 
 import com.vo.CartVO;
+import com.vo.ProductVO;
 
 public interface ShopDao<K,V,U> extends Dao<K,V> {
 	
@@ -21,6 +22,7 @@ public interface ShopDao<K,V,U> extends Dao<K,V> {
 	public ArrayList<V> searchpricedesc(U u) throws Exception;
 	public int selectallcount()throws Exception;
 	public int searchcount(U u)throws Exception;
+	public ArrayList<ProductVO> selectcategory(K k);
 	
 
 }

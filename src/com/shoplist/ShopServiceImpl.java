@@ -114,5 +114,11 @@ public class ShopServiceImpl implements ShopService<String, ProductVO, UserInput
 		return dao.searchpricedesc(u);
 	}
 
+	@Override
+	public ArrayList<ProductVO> selectcategory(String k) {
+		
+		return dao.selectcategory(k);
+	}
+
 
 }

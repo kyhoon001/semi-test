@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
@@ -318,6 +320,17 @@ public class ShoplistController {
 	public ModelAndView search(HttpServletRequest request, String curPage, String search) {
 
 		search = request.getParameter("search");
+		
+		if(search.charAt(0)=='%'){
+			try {
+				search = URLDecoder.decode(request.getParameter("search"),"UTF-8");
+				System.out.println(search);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println(search);
 		UserInput input = new UserInput(search);
 		
 		ModelAndView mv = new ModelAndView();
@@ -330,6 +343,8 @@ public class ShoplistController {
 			Pagination pg = new Pagination(count, 1);
 			input =  new UserInput(search,pg.getStartIndex(),pg.getEndIndex());
 			list = service.searchingnameasc(input);
+			for(ProductVO data : list)
+				System.out.println(data);
 			page.add(pg);
 			
 
@@ -358,4 +373,6 @@ public class ShoplistController {
 		mv.setViewName("viewshop/shop");
 		return mv;
 	}
+	
+	
 }

@@ -55,12 +55,12 @@
 			<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 				<div class="block-4 text-center border">
 					<figure class="block-4-image">
-						<a href="shop-single.html"><img src="images/${p.img }"
+						<a href="shop-single.mc?id=${p.product_id}"><img src="images/${p.img }"
 							alt="Image placeholder" class="img-fluid"></a>
 					</figure>
 					<div class="block-4-text p-4">
 						<h3>
-							<a href="shop-single.html">${p.name }</a>
+							<a href="shop-single.mc?id=${p.product_id}">${p.name }</a>
 						</h3>
 						<p class="mb-0">${p.description }</p>
 						<p class="text-primary font-weight-bold">$${p.price }</p>

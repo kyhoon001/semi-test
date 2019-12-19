@@ -20,6 +20,8 @@ public interface ShopListMapper {
 	public ArrayList<ProductVO> searchpricedesc(UserInput obj);
 	public int selectallcount();
 	public int searchcount(UserInput obj);
+	public ArrayList<ProductVO> selectcategory(String obj);
+	public int selectcategorycount(String obj);
 	
 }
 

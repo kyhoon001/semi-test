@@ -113,6 +113,12 @@ public class ShopDaoImpl implements ShopDao<String, ProductVO, UserInput> {
 		return shopmap.searchpricedesc(u);
 	}
 
+	@Override
+	public ArrayList<ProductVO> selectcategory(String k) {
+		
+		return shopmap.selectcategory(k);
+	}
+
 	
 
 	
