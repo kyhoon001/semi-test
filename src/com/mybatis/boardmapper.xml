@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.BoardMapper">
+
+	<insert id="insert" parameterType="board">
+
+		INSERT INTO BOARD(board_id,email,board_contents,inp_board_dt,
+		mdf_board_dt,board_category)
+		
+		 VALUES (
+		board_seq.nextval,
+		#{email},
+		#{board_contents},
+		#{inp_board_dt},
+		#{mdf_board_dt},
+		#{board_category}
+		)
+	</insert>
+
+
+	<update id="update" parameterType="board">
+
+		UPDATE BOARD
+		SET 
+		board_contents = #{board_contents},
+		mdf_board_dt = #{mdf_board_dt},
+		board_category = #{board_category}
+		WHERE board_id = #{board_id}
+	</update>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM BOARD
+		WHERE
+		BOARD_ID = #{BOARD_id}
+	</delete>
+
+	<select id="select" parameterType="String" resultType="board">
+		SELECT * FROM BOARD
+		WHERE BOARD_ID = #{board_id}
+	</select>
+
+	
+	<select id="selectallcount" resultType="Integer">
+		SELECT count(*) FROM BOARD
+	</select>
+
+	<!-- product detail 위한 select 구문 -->
+
+	
+
+	<select id="selectPage" parameterType="input"
+		resultType="board">
+		
+	 	SELECT * FROM(
+        SELECT ROWNUM AS SEQ, R.*
+		FROM
+		(SELECT  BOARD_ID, EMAIL, IMG,
+		BOARD_CONTENTS, INP_BOARD_DT, INP_BOARD_EMAIL, MDF_BOARD_DT,
+		MDF_BOARD_EMAIL, BOARD_CATEGORY FROM BOARD ORDER BY INP_BOARD_DT DESC) R)
+        WHERE SEQ
+		BETWEEN #{start_index} AND #{end_index}
+		
+	</select>
+</mapper>

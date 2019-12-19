@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+<title>Shoppers &mdash; get your perfect IoT equipments</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,18 +54,29 @@
 							<div class="site-top-icons">
 								<ul>
 									<c:choose>
-                     <c:when test="${email == null }">
-                     <!-- Not loginned -->
-                        <li><a href="login.mc"><span class="icon icon-person"></span></a></li>
-                       <li>
-                    <a href="cart.mc" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                    </a>
-                  </li>  
-                     </c:when>
-                     <c:otherwise>
-                     <!-- loginned -->
-                        <li><div class="d-flex">
+										<c:when test="${email == null }">
+											<!-- Not loginned -->
+											
+											<li>
+												<a href="login.mc"><span class="icon icon-person"></span></a></li>
+												
+											
+
+											<li><a href="cart.mc" class="site-cart"> <span
+													class="icon icon-shopping_cart"></span> <!--  ㅎㅎㅎㅎ --> <c:choose>
+														<c:when test="${count == null }">
+														</c:when>
+
+														<c:otherwise>
+															<span class="count">${count }</span>
+														</c:otherwise>
+													</c:choose>
+
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<!-- loginned -->
+											<li><div class="d-flex">
 									<div class="dropdown mr-1 ml-md-auto">
 										<button type="button"
 											class="btn btn-secondary btn-sm dropdown-toggle"
@@ -81,25 +92,25 @@
 										</div>
 									</div>
 									</div></li>
-                        <li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
-                       <li>
-                    <a href="cart.mc" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                      <!--  ㅎㅎㅎㅎ --> <c:choose>
-                                    <c:when test="${cartcount == null || cartcount ==0 }">
-                                    </c:when>
+											<li><a href="logout.mc"><i
+													class="fas fa-sign-out-alt"></i></a></li>
+											<li><a href="cart.mc" class="site-cart"> <span
+													class="icon icon-shopping_cart"></span> <!--  ㅎㅎㅎㅎ --> <c:choose>
+														<c:when test="${count == null }">
+														</c:when>
 
-                                    <c:otherwise>
-                                       <span class="count">${cartcount }</span>
-                                    </c:otherwise>
-                                 </c:choose>
+														<c:otherwise>
+															<span class="count">${count }</span>
+														</c:otherwise>
+													</c:choose>
 
-                           </a>
-                  </li> 
-                     </c:otherwise>
-                  </c:choose>
-                  
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+											</a></li>
+										</c:otherwise>
+									</c:choose>
+
+									<li class="d-inline-block d-md-none ml-md-0"><a href="#"
+										class="site-menu-toggle js-menu-toggle"><span
+											class="icon-menu"></span></a></li>
 								</ul>
 							</div>
 						</div>
@@ -111,7 +122,7 @@
 				role="navigation">
 				<div class="container">
 					<ul class="site-menu js-clone-nav d-none d-md-block">
-						<li class="has-children active"><a href="index.html">Home</a>
+						<li><a href="index.html">Home</a></li>
 							<!-- <ul class="dropdown">
 								<li><a href="#">Menu One</a></li>
 								<li><a href="#">Menu Two</a></li>
@@ -183,10 +194,10 @@
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 						<h3 class="footer-heading mb-4">Promo</h3>
-						<a href="#" class="block-6"> <img src="images/hero_1.jpg"
+						<a href="https://www.google.com/search?q=Iot%EB%A5%BC+%EC%B0%BE%EC%9C%BC%EC%84%B8%EC%9A%94%3F&oq=Iot%EB%A5%BC+%EC%B0%BE%EC%9C%BC%EC%84%B8%EC%9A%94%3F&aqs=chrome..69i57.4819j1j7&sourceid=chrome&ie=UTF-8" class="block-6"> <img src="images/111.jpg"
 							alt="Image placeholder" class="img-fluid rounded mb-4">
 							<h3 class="font-weight-light  mb-0">Finding Your Perfect
-								Shoes</h3>
+								IoT</h3>
 							<p>Promo from nuary 15 &mdash; 25, 2019</p>
 						</a>
 					</div>
