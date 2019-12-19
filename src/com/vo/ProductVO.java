@@ -13,6 +13,21 @@ public class ProductVO {
 	private String description;
 	private int rm;
 	MultipartFile mf;
+	
+	
+	public ProductVO(String name, int price, int stock, String img, int category_id, String description, int rm,
+			MultipartFile mf) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.stock = stock;
+		this.img = img;
+		this.category_id = category_id;
+		this.description = description;
+		this.rm = rm;
+		this.mf = mf;
+	}
+
 	public ProductVO() {
 		
 	}

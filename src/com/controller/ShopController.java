@@ -23,9 +23,7 @@ public class ShopController {
 	public ModelAndView shop_single(ModelAndView mav,HttpServletRequest request) {
 
 
-		System.out.println("test : " + request.getParameter("id"));
 		int product_id = Integer.parseInt(request.getParameter("id"));
-		//이제 여기서 selectAll에 where절에 email을 줘서 뽑아오면 되겠지.
 		
 		try {
 
@@ -35,7 +33,9 @@ public class ShopController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		mav.setViewName("viewdetail/shop-single");
+		
+		mav.addObject("center", "viewdetail/shop-single");
+		mav.setViewName("main");
 		return mav;
 	}
 	
@@ -58,7 +58,6 @@ public class ShopController {
 		int soldamount = (int)(Math.random()*17 + 1 );
 		String description = "board 입니다. 임시로 넣은 test case입니다.";
 		p = new ProductVO(product_id,name,price,stock,img,category_id,soldamount,description);
-		System.out.println(p.toString());
 		try {
 			service.register(p);
 			System.out.println("성공");

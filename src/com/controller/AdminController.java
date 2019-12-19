@@ -54,7 +54,6 @@ public class AdminController {
 		
 		try {
 			ProductVO vo = service.pick(id);
-			System.out.println(vo);
 			mv.addObject("dbproduct", vo);
 
 		} catch (Exception e) {
@@ -118,7 +117,6 @@ public class AdminController {
 		String imgname = vo.getMf().getOriginalFilename();
 		vo.setImg(imgname);
 		mv.addObject("plist", "asdf");
-		
 		try {
 
 			sservice.register(vo);

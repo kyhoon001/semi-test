@@ -63,6 +63,11 @@ public class CartDaoImpl implements CartDao<String, CartVO,CartProductVO> {
 		cartmap.clear(k);
 	}
 
+	@Override
+	public CartVO findbyproductid(CartVO obj) throws Exception {
+		return cartmap.findbyproductid(obj);
+	}
+
 
 
 	

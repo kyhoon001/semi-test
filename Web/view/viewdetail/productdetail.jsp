@@ -15,9 +15,10 @@
 		<p>${dbproduct.description }</p>
 		<p class="mb-4"></p>
 		<p>
-			<strong class="text-primary h4">${dbproduct.price }</strong>
+			<strong class="text-primary h4">$${dbproduct.price }</strong>
 		</p>
-		<p>${dbproduct.soldamount }</p>
+		<p>남은 갯수 : ${dbproduct.stock }</p>
+		<p>판매한 수량 : ${dbproduct.soldamount }</p>
 		<div class="mb-1 d-flex"></div>
 		<form action="cartAdd.mc" method="get">
 		<div class="mb-5">

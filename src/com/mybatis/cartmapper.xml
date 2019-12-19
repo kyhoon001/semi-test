@@ -29,8 +29,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	
+	<select id="findbyproductid" parameterType="cart" 
+	resultType="cart">
+		SELECT * FROM CART
+		WHERE product_id=#{product_id} and email=#{email}
+	</select>
 	
-	<select id="select" parameterType="cart" 
+	
+	
+	<select id="select" parameterType="String" 
 	resultType="cart">
 		SELECT * FROM CART
 		WHERE BASKET_ID=#{basket_id}
@@ -61,7 +68,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM CART
 	</select>
 	
-	<select id="count" resultType="cart"> <!--  몇개들어있냐 -->
+	<select id="count" resultType="Integer"> <!--  몇개들어있냐 -->
 		SELECT count(*) FROM CART
 		WHERE EMAIL=#{email} 
 	</select>

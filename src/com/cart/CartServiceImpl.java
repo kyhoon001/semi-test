@@ -63,6 +63,11 @@ public class CartServiceImpl implements CartService<String, CartVO,CartProductVO
 		dao.clear(k);
 	}
 
+	@Override
+	public CartVO findbyproductid(CartVO obj) throws Exception {
+		return dao.findbyproductid(obj);
+	}
+
 
 
 }

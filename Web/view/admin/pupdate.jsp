@@ -37,9 +37,11 @@
 
 						<div
 							class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-							<form action="" class="site-block-top-search">
+							<form action="search.mc" class="site-block-top-search"
+								method="post">
 								<span class="icon icon-search2"></span> <input type="text"
-									class="form-control border-0" placeholder="Search">
+									class="form-control border-0" name="search"
+									placeholder="Search">
 							</form>
 						</div>
 
@@ -53,14 +55,38 @@
 						<div class="col-6 col-md-4 order-3 order-md-3 text-right">
 							<div class="site-top-icons">
 								<ul>
-									<li><a href="#"><span class="icon icon-person"></span></a></li>
-									<li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-									<li><a href="cart.html" class="site-cart"> <span
-											class="icon icon-shopping_cart"></span> <span class="count">2</span>
-									</a></li>
-									<li class="d-inline-block d-md-none ml-md-0"><a href="#"
-										class="site-menu-toggle js-menu-toggle"><span
-											class="icon-menu"></span></a></li>
+									<c:choose>
+                     <c:when test="${email == null }">
+                     <!-- Not loginned -->
+                        <li><a href="login.mc"><span class="icon icon-person"></span></a></li>
+                       <li>
+                    <a href="cart.mc" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                    </a>
+                  </li>  
+                     </c:when>
+                     <c:otherwise>
+                     <!-- loginned -->
+                        <li><a href="userDetail.mc?email=${email }">${name }님</a>
+                        <li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
+                       <li>
+                    <a href="cart.mc" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                      <!--  ㅎㅎㅎㅎ --> <c:choose>
+                                    <c:when test="${cartcount == null || cartcount ==0 }">
+                                    </c:when>
+
+                                    <c:otherwise>
+                                       <span class="count">${cartcount }</span>
+                                    </c:otherwise>
+                                 </c:choose>
+
+                           </a>
+                  </li> 
+                     </c:otherwise>
+                  </c:choose>
+                  
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
 								</ul>
 							</div>
 						</div>
@@ -72,8 +98,8 @@
 				role="navigation">
 				<div class="container">
 					<ul class="site-menu js-clone-nav d-none d-md-block">
-						<li class="has-children"><a href="index.html"></a>
-							<ul class="dropdown">
+						<li class="has-children active"><a href="index.html">Home</a>
+							<!-- <ul class="dropdown">
 								<li><a href="#">Menu One</a></li>
 								<li><a href="#">Menu Two</a></li>
 								<li><a href="#">Menu Three</a></li>
@@ -83,21 +109,22 @@
 										<li><a href="#">Menu Two</a></li>
 										<li><a href="#">Menu Three</a></li>
 									</ul></li>
-							</ul></li>
-						<li class="has-children"><a href="about.html">About</a>
+							</ul></li> -->
+						<!-- <li class="has-children"><a href="about.mc">About</a>
 							<ul class="dropdown">
 								<li><a href="#">Menu One</a></li>
 								<li><a href="#">Menu Two</a></li>
 								<li><a href="#">Menu Three</a></li>
-							</ul></li>
-						<li><a href="shop.html">Shop</a></li>
-						<li><a href="#">Catalogue</a></li>
+							</ul></li>-->
+						<li><a href="shop.mc">Shop</a></li>
+						
 						<li><a href="#">New Arrivals</a></li>
-						<li class="active"><a href="contact.html">Contact</a></li>
+						<li><a href="board.mc">Board</a></li>
 					</ul>
 				</div>
 			</nav>
 		</header>
+
 
 		<div class="bg-light py-3">
 			<div class="container">

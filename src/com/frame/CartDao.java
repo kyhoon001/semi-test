@@ -3,6 +3,7 @@ package com.frame;
 import java.util.ArrayList;
 
 import com.vo.CartProductVO;
+import com.vo.CartVO;
 
 public interface CartDao<K,V,CPV> extends Dao<K,V> {
 
@@ -14,4 +15,5 @@ public interface CartDao<K,V,CPV> extends Dao<K,V> {
 	public ArrayList<V> select() throws Exception;
 	public int count(K k) throws Exception;
 	public void clear(K k) throws Exception;
+	public V findbyproductid(V obj) throws Exception;
 }

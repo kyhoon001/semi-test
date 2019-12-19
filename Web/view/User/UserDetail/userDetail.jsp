@@ -28,58 +28,68 @@
   
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
-      <div class="site-navbar-top">
-        <div class="container">
-          <div class="row align-items-center">
+			<div class="site-navbar-top">
+				<div class="container">
+					<div class="row align-items-center">
 
-            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="#" class="site-block-top-search">
-                <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
-              </form>
-            </div>
+						<div
+							class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+							<form action="search.mc" class="site-block-top-search"
+								method="post">
+								<span class="icon icon-search2"></span> <input type="text"
+									class="form-control border-0" name="search"
+									placeholder="Search">
+							</form>
+						</div>
 
-            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-              <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Shoppers</a>
-              </div>
-            </div>
+						<div
+							class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+							<div class="site-logo">
+								<a href="index.html" class="js-logo-clone">Shoppers</a>
+							</div>
+						</div>
 
-            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-                            <div class="site-top-icons">
-                <ul>
-                  <c:choose>
+						<div class="col-6 col-md-4 order-3 order-md-3 text-right">
+							<div class="site-top-icons">
+								<ul>
+									<c:choose>
                      <c:when test="${email == null }">
                      <!-- Not loginned -->
                         <li><a href="login.mc"><span class="icon icon-person"></span></a></li>
                        <li>
                     <a href="cart.mc" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
-                      <!--  ㅎㅎㅎㅎ --> <c:choose>
-                                    <c:when test="${count == null }">
-                                    </c:when>
-
-                                    <c:otherwise>
-                                       <span class="count">${count }</span>
-                                    </c:otherwise>
-                                 </c:choose>
-
-                           </a>
+                    </a>
                   </li>  
                      </c:when>
                      <c:otherwise>
                      <!-- loginned -->
-                        <li><a href="userDetail.mc?email=${email }">${name }님</a>
+                       <li><div class="d-flex">
+									<div class="dropdown mr-1 ml-md-auto">
+										<button type="button"
+											class="btn btn-secondary btn-sm dropdown-toggle"
+											id="dropdownMenuOffset" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">
+												
+											<a href="userDetail.mc?email=${email }">${name }님</a>
+										</button>
+										<div class="dropdown-menu"
+											aria-labelledby="dropdownMenuOffset">
+											<a class="dropdown-item" href="userDetail.mc?email=${email }">마이페이지</a> <a
+												class="dropdown-item" href="orderlist.mc?email=${email }">주문내역</a> 
+										</div>
+									</div>
+									</div></li>
                         <li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
                        <li>
                     <a href="cart.mc" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <!--  ㅎㅎㅎㅎ --> <c:choose>
-                                    <c:when test="${count == null }">
+                                    <c:when test="${cartcount == null || cartcount ==0 }">
                                     </c:when>
 
                                     <c:otherwise>
-                                       <span class="count">${count }</span>
+                                       <span class="count">${cartcount }</span>
                                     </c:otherwise>
                                  </c:choose>
 
@@ -89,48 +99,44 @@
                   </c:choose>
                   
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                </ul>
-              </div> 
-            </div>
+								</ul>
+							</div>
+						</div>
 
-          </div>
-        </div>
-      </div> 
-      <nav class="site-navigation text-right text-md-center" role="navigation">
-        <div class="container">
-          <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
-              <a href="index.html">Home</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Sub Menu</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="has-children">
-              <a href="about.mc">About</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-              </ul>
-            </li>
-            <li><a href="shop.mc">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="contact.mc">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+					</div>
+				</div>
+			</div>
+			<nav class="site-navigation text-right text-md-center"
+				role="navigation">
+				<div class="container">
+					<ul class="site-menu js-clone-nav d-none d-md-block">
+						<li class="has-children active"><a href="index.html">Home</a>
+							<!-- <ul class="dropdown">
+								<li><a href="#">Menu One</a></li>
+								<li><a href="#">Menu Two</a></li>
+								<li><a href="#">Menu Three</a></li>
+								<li class="has-children"><a href="#">Sub Menu</a>
+									<ul class="dropdown">
+										<li><a href="#">Menu One</a></li>
+										<li><a href="#">Menu Two</a></li>
+										<li><a href="#">Menu Three</a></li>
+									</ul></li>
+							</ul></li> -->
+						<!-- <li class="has-children"><a href="about.mc">About</a>
+							<ul class="dropdown">
+								<li><a href="#">Menu One</a></li>
+								<li><a href="#">Menu Two</a></li>
+								<li><a href="#">Menu Three</a></li>
+							</ul></li>-->
+						<li><a href="shop.mc">Shop</a></li>
+						
+						<li><a href="#">New Arrivals</a></li>
+						<li><a href="board.mc">Board</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
 
 	<div class="bg-light py-3">
       <div class="container">
@@ -144,7 +150,7 @@
 		<div class="container">
 	        <div class="row">
 	          <div class="col-md-12">
-	            <h2 class="h3 mb-3 text-black">User Detail</h2>
+	            <h2 class="h3 mb-3 text-black">마이페이지</h2>
 	          </div>
 	          <div class="col-md-12">
 	            <form id="userDetail" action="userUpdate.mc" method="post">
@@ -152,7 +158,7 @@
 	                
 	                <div class="form-group row">
 	                  <div class="col-md-12">
-	                    <label for="name" class="text-black">Email</label>
+	                    <label for="name" class="text-black">이메일</label>
 	                    <input type="email" class="form-control" id="email" name="email" placeholder="" readonly value="${user.email }">
 	                  </div>
 	                </div>
@@ -161,35 +167,35 @@
 	                
 	                <div class="form-group row">
 	                  <div class="col-md-12">
-	                    <label for="Password" class="text-black">Password</label>
+	                    <label for="Password" class="text-black">비밀번호</label>
 	                    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="" readonly value="${user.pwd }">
 	                  </div>
 	                </div>
 	                
 	                <div class="form-group row">
 	                  <div class="col-md-12">
-	                    <label for="Name" class="text-black">Name</label>
+	                    <label for="Name" class="text-black">이름</label>
 	                    <input type="text" class="form-control" id="name" name="name" placeholder="" readonly value="${user.name }">
 	                  </div>
 	                </div>
 	                
 	                <div class="form-group row">
 	                  <div class="col-md-12">
-	                    <label for="Address" class="text-black">Address</label>
+	                    <label for="Address" class="text-black">주소</label>
 	                    <input type="text" class="form-control" id="address" name="address" placeholder="" readonly value="${user.address }">
 	                  </div>
 	                </div>
 	                
 	                <div class="form-group row">
 	                  <div class="col-md-12">
-	                    <label for="phone" class="text-black">Phone</label>
+	                    <label for="phone" class="text-black">연락처</label>
 	                    <input type="text" class="form-control" id="phone" name="phone" placeholder="" readonly value="${user.phone }">
 	                  </div>
 	                </div>
 	                
 	                <div class="form-group row">
 	                  <div class="col-md-12">
-	                    <label for="Birthdate" class="text-black">Birthdate</label>
+	                    <label for="Birthdate" class="text-black">생년월일</label>
 	                    <fmt:formatDate value="${user.b_date}" var="dateFmt" pattern="yyyy-MM-dd"/>
 	                    <input type="date" class="form-control" id="b_date" name="b_date" placeholder="" readonly value="${dateFmt }">
 	                  </div>
@@ -206,10 +212,10 @@
 	                	</c:otherwise>
 	                </c:choose>
 	                <div class="m-6">
-		                <button id="update">Update</button>
-		                <button id="confirm">Confirm</button>
-		                <button id="cancel">Cancel</button>
-		                <button id="withdrawl">Withdrawal</button>
+		                <button id="update">수정하기</button>
+		                <button id="confirm">확인</button>
+		                <button id="cancel">취소</button>
+		                <button id="withdrawl">회원탈퇴</button>
 	                </div>
 	              </div>
 	            </form>

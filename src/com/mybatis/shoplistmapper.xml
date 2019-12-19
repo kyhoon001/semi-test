@@ -9,9 +9,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="product">
 
 		INSERT INTO PRODUCT VALUES (
-		#{product_id} , #{name}, #{price}, #{stock},
+		product_id_sequence.nextval, #{name}, #{price}, #{stock},
 		#{img},
-		#{category_id},#{soldamount} ,#{description}
+		#{category_id}, 0 ,#{description}
 		)
 	</insert>
 

@@ -15,4 +15,5 @@ public interface CartMapper {
 	public ArrayList<CartVO> cselect();
 	public int count(String obj);
 	public void clear(String obj);
+	public CartVO findbyproductid(CartVO obj);
 }

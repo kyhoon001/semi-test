@@ -118,12 +118,12 @@ $('.js-btn-plus').on('click', function (e) {
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th class="product-thumbnail">Image</th>
-								<th class="product-name">Product</th>
-								<th class="product-price">Price</th>
-								<th class="product-quantity">Quantity</th>
-								<th class="product-total">Total</th>
-								<th class="product-remove">Remove</th>
+								<th class="product-thumbnail">상품</th>
+								<th class="product-name">상품명</th>
+								<th class="product-price">상품 금액</th>
+								<th class="product-quantity">구매 수량</th>
+								<th class="product-total">금액</th>
+								<th class="product-remove">삭제하기</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -187,7 +187,7 @@ $('.js-btn-plus').on('click', function (e) {
 						<!-- 버튼을 클릭하면 데이터베이스 update하고 지금 페이지로 돌아오는부분 시작-->
 						<!-- 고민해봐야되는게 이용자 입장에서 헷갈릴 수 있음. -->
 						<button
-							id="updatecart" class="btn btn-primary btn-sm btn-block "> <!-- onclick="window.location='cartupdate.mc'" -->Update Cart</button>
+							id="updatecart" class="btn btn-primary btn-sm btn-block "> <!-- onclick="window.location='cartupdate.mc'" -->새로고침</button>
 
 						<!-- 버튼을 클릭하면 데이터베이스 update하고 지금 페이지로 돌아오는부분 끝-->
 
@@ -195,8 +195,7 @@ $('.js-btn-plus').on('click', function (e) {
 					<div class="col-md-6">
 						<!-- 버튼을 클릭하면 쇼핑하는 페이지로 리다이렉트하는 부분 시작 -->
 						<a href="shop.mc"><button
-								class="btn btn-outline-primary btn-sm btn-block" onclick="window.location='shop.mc'">Continue
-								Shopping</button></a>
+								class="btn btn-outline-primary btn-sm btn-block" onclick="window.location='shop.mc'">계속 쇼핑하기</button></a>
 						<!-- 버튼을 클릭하면 쇼핑하는 페이지로 리다이렉트하는 부분 종료 -->
 					</div>
 				</div>
@@ -226,12 +225,12 @@ $('.js-btn-plus').on('click', function (e) {
 					<div class="col-md-7">
 						<div class="row">
 							<div class="col-md-12 text-right border-bottom mb-5">
-								<h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+								<h3 class="text-black h4 text-uppercase">장바구니 금액</h3>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-6">
-								<span class="text-black">Subtotal</span>
+								<span class="text-black">결제 예상 금액</span>
 							</div>
 							<div class="col-md-6 text-right">
 								<strong id="subtotal" class="text-black">$230.00</strong>
@@ -239,7 +238,7 @@ $('.js-btn-plus').on('click', function (e) {
 						</div>
 						<div class="row mb-5">
 							<div class="col-md-6">
-								<span class="text-black">Total</span>
+								<span class="text-black">총 금액 </span>
 							</div>
 							<div class="col-md-6 text-right">
 								<strong  id="total" class="text-black">$230.00</strong>
@@ -249,8 +248,7 @@ $('.js-btn-plus').on('click', function (e) {
 						<div class="row">
 							<div class="col-md-12">
 								<button class="btn btn-primary btn-lg py-3 btn-block"
-									onclick="window.location='checkout.mc?email=${email }'">Proceed To
-									Checkout</button>
+									onclick="window.location='checkout.mc?email=${email }'">구매하기</button>
 							</div>
 						</div>
 					</div>

@@ -137,7 +137,7 @@ jQuery(document).ready(function ($) {
 		$('.js-btn-minus').on('click', function (e) {
 			e.preventDefault();
 			if ($(this).closest('.input-group').find('.form-control').val() != 0) {
-				$(this).closest('.input-group').find('.form-control').val(parseInt($(this).closest('.input-group').find('.form-control').val()) - 1);
+				$(this).closest('.input-group').find('.form-control').val(parseInt($(this).closest('.input-group').find('.form-control').val()) -1);
 				//$(this).closest('.trtest').find('.totalprice').val(parseInt($(this).closest('.input-group').find('.form-control').val()) *   );
 
 

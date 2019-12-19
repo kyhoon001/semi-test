@@ -19,4 +19,5 @@ public interface CartService<K,V,CPV> extends Service<K,V> {
 	public ArrayList<V> get() throws Exception;
 	public int count(K k) throws Exception;
 	public void clear(K k) throws Exception;
+	public V findbyproductid(V obj) throws Exception;
 }

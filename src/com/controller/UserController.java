@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.frame.CartService;
 import com.frame.Service;
 import com.vo.UserVO;
 
@@ -22,12 +23,16 @@ public class UserController {
 	
 	@Resource(name="uservice")
 	private Service service;
+	@Resource(name="cartservice")
+	private CartService cartservice;
 	
 	@RequestMapping("login.mc")
-	public String login() {
+	public ModelAndView login() {
 		
+ModelAndView mv = new ModelAndView();
 		
-		return "User/Login/login";
+		mv.setViewName("User/Login/login");
+		return mv;
 		
 	}
 	
@@ -48,7 +53,7 @@ public class UserController {
 		String phone = request.getParameter("phone");
 		String date = request.getParameter("b_date");
 		String sex = request.getParameter("sex");
-		//String data�몴占� date 占쏙옙占쎌뿯占쎌몵嚥∽옙 癰귨옙占쎌넎
+		//String data占쎈ご�뜝占� date �뜝�룞�삕�뜝�럩肉��뜝�럩紐드슖�댙�삕 �솻洹⑥삕�뜝�럩�꼶
 		Date b_date = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -58,7 +63,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 		
-		//占쎌뵠筌롫뗄�뵬 餓λ쵎�궗筌ｋ똾寃�, user�몴占� �뵳�뗪쉘占쎈릭沃섓옙嚥∽옙 return 揶쏅�れ뵠 null占쎌뵠筌롳옙 占쎈릭占쎈뼊 �굜遺얜굡 占쎈뼄占쎈뻬, null 占쎈툡占쎈빍筌롳옙 餓λ쵎�궗筌ｋ똾寃� 占쎌넇占쎌뵥 筌롫뗄�뻻筌욑옙占쏙옙 占쎈맙�뙼占� 占쎌읈占쎈뼎
+		//�뜝�럩逾좂춯濡ル뾼占쎈뎄 繞벿살탮占쎄텢嶺뚳퐢�샑野껓옙, user占쎈ご�뜝占� 占쎈뎨占쎈뿪�돇�뜝�럥由�亦껋꼻�삕�슖�댙�삕 return �뤆�룆占썬굦逾� null�뜝�럩逾좂춯濡녹삕 �뜝�럥由��뜝�럥堉� 占쎄턀�겫�뼔援� �뜝�럥堉꾢뜝�럥六�, null �뜝�럥�닡�뜝�럥鍮띸춯濡녹삕 繞벿살탮占쎄텢嶺뚳퐢�샑野껓옙 �뜝�럩�꼪�뜝�럩逾� 嶺뚮∥�뾼占쎈뻣嶺뚯쉻�삕�뜝�룞�삕 �뜝�럥留숋옙�쇊�뜝占� �뜝�럩�쓧�뜝�럥堉�
 		user = new UserVO(email, pwd, name, address, phone, b_date, sex);
 		
 		try {
@@ -99,21 +104,32 @@ public class UserController {
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		UserVO user = null;
+		int cartcount = 0;
+		
 		try {
 			user = (UserVO) service.get(email);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		if(user==null || !pwd.equals(user.getPwd())) {
-			//main占쎌몵嚥∽옙 揶쏅뗄�뱽 占쎈르 user email�⑨옙 name 占쎈쑓占쎌뵠占쎄숲�몴占� 占쎄퐜疫꿸퀗由� 占쎌맄占쎈맙
 			mav.addObject("message","No users or PWD is not corrected");
 			mav.setViewName("User/Login/login");
+			
 			
 		}else {
 			session.setAttribute("email", user.getEmail());
 			session.setAttribute("name", user.getName());
+			try {
+				cartcount = cartservice.count(email);
+				System.out.println(cartcount);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			session.setAttribute("cartcount", cartcount);
 			mav.setViewName("main");
 		}
 		
@@ -160,7 +176,7 @@ public class UserController {
 		String phone = request.getParameter("phone");
 		String date = request.getParameter("b_date");
 		String sex = request.getParameter("sex");
-		//String data�몴占� date 占쏙옙占쎌뿯占쎌몵嚥∽옙 癰귨옙占쎌넎
+		//String data占쎈ご�뜝占� date �뜝�룞�삕�뜝�럩肉��뜝�럩紐드슖�댙�삕 �솻洹⑥삕�뜝�럩�꼶
 		Date b_date = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {

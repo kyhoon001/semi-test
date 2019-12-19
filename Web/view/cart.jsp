@@ -48,9 +48,11 @@
 
 						<div
 							class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-							<form action="" class="site-block-top-search">
+							<form action="search.mc" class="site-block-top-search"
+								method="post">
 								<span class="icon icon-search2"></span> <input type="text"
-									class="form-control border-0" placeholder="Search">
+									class="form-control border-0" name="search"
+									placeholder="Search">
 							</form>
 						</div>
 
@@ -65,41 +67,52 @@
 							<div class="site-top-icons">
 								<ul>
 									<c:choose>
-               		<c:when test="${email == null }">
-               		<!-- Not loginned -->
-               			<li><a href="login.mc"><span class="icon icon-person"></span></a></li>
-	                 	<li>
-	                    <a href="cart.mc" class="site-cart">
-	                      <span class="icon icon-shopping_cart"></span>
-	                    </a>
-	                  	</li> 
-               		</c:when>
-               		<c:otherwise>
-               		<!-- loginned -->
-               			<li><a href="userDetail.mc?email=${email }">${name }님</a>
-	                  	<li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
-	                 	<li>
-	                    <a href="cart.mc" class="site-cart">
-	                      <span class="icon icon-shopping_cart"></span>
-	                      <span class="count">2</span>
-	                    </a>
-	                  	</li> 
-               		</c:otherwise>
-               	</c:choose>
-											 <c:choose>
-												<c:when test="${count == null }">
-												</c:when>
+                     <c:when test="${email == null }">
+                     <!-- Not loginned -->
+                        <li><a href="login.mc"><span class="icon icon-person"></span></a></li>
+                       <li>
+                    <a href="cart.mc" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                    </a>
+                  </li>  
+                     </c:when>
+                     <c:otherwise>
+                     <!-- loginned -->
+                        <li><div class="d-flex">
+									<div class="dropdown mr-1 ml-md-auto">
+										<button type="button"
+											class="btn btn-secondary btn-sm dropdown-toggle"
+											id="dropdownMenuOffset" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">
+												
+											<a href="userDetail.mc?email=${email }">${name }님</a>
+										</button>
+										<div class="dropdown-menu"
+											aria-labelledby="dropdownMenuOffset">
+											<a class="dropdown-item" href="userDetail.mc?email=${email }">마이페이지</a> <a
+												class="dropdown-item" href="orderlist.mc?email=${email }">주문내역</a> 
+										</div>
+									</div>
+									</div></li>
+                        <li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
+                       <li>
+                    <a href="cart.mc" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                      <!--  ㅎㅎㅎㅎ --> <c:choose>
+                                    <c:when test="${cartcount == null || cartcount ==0 }">
+                                    </c:when>
 
-												<c:otherwise>
-													<span class="count">${count }</span>
-												</c:otherwise>
-											</c:choose>
+                                    <c:otherwise>
+                                       <span class="count">${cartcount }</span>
+                                    </c:otherwise>
+                                 </c:choose>
 
-
-									</a></li>
-									<li class="d-inline-block d-md-none ml-md-0"><a href="#"
-										class="site-menu-toggle js-menu-toggle"><span
-											class="icon-menu"></span></a></li>
+                           </a>
+                  </li> 
+                     </c:otherwise>
+                  </c:choose>
+                  
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
 								</ul>
 							</div>
 						</div>
@@ -111,8 +124,8 @@
 				role="navigation">
 				<div class="container">
 					<ul class="site-menu js-clone-nav d-none d-md-block">
-						<li class="has-children"><a href="index.html">Home</a>
-							<ul class="dropdown">
+						<li class="has-children active"><a href="index.html">Home</a>
+							<!-- <ul class="dropdown">
 								<li><a href="#">Menu One</a></li>
 								<li><a href="#">Menu Two</a></li>
 								<li><a href="#">Menu Three</a></li>
@@ -122,21 +135,22 @@
 										<li><a href="#">Menu Two</a></li>
 										<li><a href="#">Menu Three</a></li>
 									</ul></li>
-							</ul></li>
-						<li class="has-children"><a href="about.mc">About</a>
+							</ul></li> -->
+						<!-- <li class="has-children"><a href="about.mc">About</a>
 							<ul class="dropdown">
 								<li><a href="#">Menu One</a></li>
 								<li><a href="#">Menu Two</a></li>
 								<li><a href="#">Menu Three</a></li>
-							</ul></li>
+							</ul></li>-->
 						<li><a href="shop.mc">Shop</a></li>
-						<li><a href="#">Catalogue</a></li>
+						
 						<li><a href="#">New Arrivals</a></li>
-						<li><a href="contact.mc">Contact</a></li>
+						<li><a href="board.mc">Board</a></li>
 					</ul>
 				</div>
 			</nav>
 		</header>
+
 
 
 		<div class="bg-light py-3">
@@ -176,7 +190,7 @@
 
 
 									<!--  반복 추가부분. -->
-
+								<h1 style="background-color:Tomato; color:white; text-align:center;"> ${errormessage } </h1>
 									<c:choose>
 										<c:when test="${cartlist == null }">
 											<jsp:include page="emptycart.jsp"></jsp:include>
