@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class Util {
 	// 받아온 데이터를 서버에 이미지를 올린다.
 		public static void saveFile(MultipartFile mf) {
-			String dir = "C:\\spring\\pj\\web\\images\\";
+			String dir = "C:\\spring\\header\\web\\images\\";
 			byte [] data;
 			String imgname = mf.getOriginalFilename();
 			try {

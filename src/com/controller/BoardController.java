@@ -97,7 +97,6 @@ public class BoardController {
 		BoardVO vo = null;
 		try {
 			vo = bservice.get(board_id);
-			System.out.println(vo);
 		} catch (Exception e) {
 		
 			e.printStackTrace();
@@ -112,12 +111,11 @@ public class BoardController {
 	
 	
 	@RequestMapping("bupdate.mc")
-	public ModelAndView bupdate(String category_id, String contents, String board_id) {
-		ModelAndView mv = new ModelAndView();
+	public String bupdate(String category_id, String contents, String board_id) {
 		Date date = new Date();
 		BoardVO vo = new BoardVO(board_id,contents,date,category_id);
 	
-		System.out.println(vo);
+		
 		try {
 			bservice.modify(vo);
 		} catch (Exception e) {
@@ -126,10 +124,8 @@ public class BoardController {
 		}
 		
 		
-		mv.addObject("center","board");
-		mv.setViewName("main");
 		
-		return mv;
+		return "redirect:board.mc";
 	}
 	
 	@RequestMapping("bupdatego.mc")
@@ -151,16 +147,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping("bdelete.mc")
-	public ModelAndView bdelete(String board_id ) {
-		ModelAndView mv = new ModelAndView();
+	public String bdelete(String board_id ) {
 		try {
 			bservice.remove(board_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		mv.addObject("center","board");
-		mv.setViewName("main");
 		
-		return mv;
+		return "redirect:board.mc";
 	}
 }

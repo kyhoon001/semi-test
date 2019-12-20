@@ -43,7 +43,7 @@ function searching(category){
 <body>
 
 	<div class="site-wrap">
-		<header class="site-navbar" role="banner">
+			<header class="site-navbar" role="banner">
 			<div class="site-navbar-top">
 				<div class="container">
 					<div class="row align-items-center">
@@ -51,10 +51,10 @@ function searching(category){
 						<div
 							class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
 							<form action="search.mc" class="site-block-top-search"
-								method="post" accept-charset="UTF-8">
+								method="post">
 								<span class="icon icon-search2"></span> <input type="text"
 									class="form-control border-0" name="search"
-									placeholder="Search" >
+									placeholder="Search">
 							</form>
 						</div>
 
@@ -69,18 +69,29 @@ function searching(category){
 							<div class="site-top-icons">
 								<ul>
 									<c:choose>
-                     <c:when test="${email == null }">
-                     <!-- Not loginned -->
-                        <li><a href="login.mc"><span class="icon icon-person"></span></a></li>
-                       <li>
-                    <a href="cart.mc" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                    </a>
-                  </li>  
-                     </c:when>
-                     <c:otherwise>
-                     <!-- loginned -->
-                       <li><div class="d-flex">
+										<c:when test="${email == null }">
+											<!-- Not loginned -->
+											
+											<li>
+												<a href="login.mc"><span class="icon icon-person"></span></a></li>
+												
+											
+
+											<li><a href="cart.mc" class="site-cart"> <span
+													class="icon icon-shopping_cart"></span> <!--  ぞぞぞぞ --> <c:choose>
+														<c:when test="${count == null }">
+														</c:when>
+
+														<c:otherwise>
+															<span class="count">${count }</span>
+														</c:otherwise>
+													</c:choose>
+
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<!-- loginned -->
+											<li><div class="d-flex">
 									<div class="dropdown mr-1 ml-md-auto">
 										<button type="button"
 											class="btn btn-secondary btn-sm dropdown-toggle"
@@ -96,9 +107,9 @@ function searching(category){
 										</div>
 									</div>
 									</div></li>
-                        <li><a href="logout.mc"><i class="fas fa-sign-out-alt"></i></a></li>
-                       <li>
-                    <a href="cart.mc" class="site-cart">
+											<li><a href="logout.mc"><i
+													class="fas fa-sign-out-alt"></i></a></li>
+											<li> <a href="cart.mc" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <!--  ぞぞぞぞ --> <c:choose>
                                     <c:when test="${cartcount == null || cartcount ==0 }">
@@ -109,12 +120,13 @@ function searching(category){
                                     </c:otherwise>
                                  </c:choose>
 
-                           </a>
-                  </li> 
-                     </c:otherwise>
-                  </c:choose>
-                  
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                           </a></li>
+										</c:otherwise>
+									</c:choose>
+
+									<li class="d-inline-block d-md-none ml-md-0"><a href="#"
+										class="site-menu-toggle js-menu-toggle"><span
+											class="icon-menu"></span></a></li>
 								</ul>
 							</div>
 						</div>
@@ -126,7 +138,7 @@ function searching(category){
 				role="navigation">
 				<div class="container">
 					<ul class="site-menu js-clone-nav d-none d-md-block">
-						<li class="has-children active"><a href="index.html">Home</a>
+						<li><a href="index.html">Home</a></li>
 							<!-- <ul class="dropdown">
 								<li><a href="#">Menu One</a></li>
 								<li><a href="#">Menu Two</a></li>
@@ -146,7 +158,7 @@ function searching(category){
 							</ul></li>-->
 						<li><a href="shop.mc">Shop</a></li>
 						
-						<li><a href="#">New Arrivals</a></li>
+						
 						<li><a href="board.mc">Board</a></li>
 					</ul>
 				</div>
@@ -225,7 +237,7 @@ function searching(category){
 			</div>
 		</div>
 
-		<footer class="site-footer border-top">
+			<footer class="site-footer border-top">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 mb-5 mb-lg-0">
@@ -259,10 +271,10 @@ function searching(category){
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 						<h3 class="footer-heading mb-4">Promo</h3>
-						<a href="#" class="block-6"> <img src="images/hero_1.jpg"
+						<a href="https://www.google.com/search?q=Iot%EB%A5%BC+%EC%B0%BE%EC%9C%BC%EC%84%B8%EC%9A%94%3F&oq=Iot%EB%A5%BC+%EC%B0%BE%EC%9C%BC%EC%84%B8%EC%9A%94%3F&aqs=chrome..69i57.4819j1j7&sourceid=chrome&ie=UTF-8" class="block-6"> <img src="images/111.jpg"
 							alt="Image placeholder" class="img-fluid rounded mb-4">
 							<h3 class="font-weight-light  mb-0">Finding Your Perfect
-								Shoes</h3>
+								IoT</h3>
 							<p>Promo from nuary 15 &mdash; 25, 2019</p>
 						</a>
 					</div>
@@ -297,9 +309,7 @@ function searching(category){
 							Copyright &copy;
 							<script data-cfasync="false"
 								src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
+							<script>document.write(new Date().getFullYear());</script>
 							All rights reserved | This template is made with <i
 								class="icon-heart" aria-hidden="true"></i> by <a
 								href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>

@@ -144,7 +144,7 @@
 							</ul></li>-->
 						<li><a href="shop.mc">Shop</a></li>
 						
-						<li><a href="#">New Arrivals</a></li>
+						
 						<li><a href="board.mc">Board</a></li>
 					</ul>
 				</div>
@@ -211,7 +211,7 @@
 -->
 				
 
-		<footer class="site-footer border-top">
+			<footer class="site-footer border-top">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 mb-5 mb-lg-0">
@@ -245,10 +245,10 @@
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 						<h3 class="footer-heading mb-4">Promo</h3>
-						<a href="#" class="block-6"> <img src="images/hero_1.jpg"
+						<a href="https://www.google.com/search?q=Iot%EB%A5%BC+%EC%B0%BE%EC%9C%BC%EC%84%B8%EC%9A%94%3F&oq=Iot%EB%A5%BC+%EC%B0%BE%EC%9C%BC%EC%84%B8%EC%9A%94%3F&aqs=chrome..69i57.4819j1j7&sourceid=chrome&ie=UTF-8" class="block-6"> <img src="images/111.jpg"
 							alt="Image placeholder" class="img-fluid rounded mb-4">
 							<h3 class="font-weight-light  mb-0">Finding Your Perfect
-								Shoes</h3>
+								IoT</h3>
 							<p>Promo from nuary 15 &mdash; 25, 2019</p>
 						</a>
 					</div>
@@ -283,9 +283,7 @@
 							Copyright &copy;
 							<script data-cfasync="false"
 								src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
+							<script>document.write(new Date().getFullYear());</script>
 							All rights reserved | This template is made with <i
 								class="icon-heart" aria-hidden="true"></i> by <a
 								href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>

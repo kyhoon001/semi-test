@@ -94,17 +94,18 @@
 									</div></li>
 											<li><a href="logout.mc"><i
 													class="fas fa-sign-out-alt"></i></a></li>
-											<li><a href="cart.mc" class="site-cart"> <span
-													class="icon icon-shopping_cart"></span> <!--  ㅎㅎㅎㅎ --> <c:choose>
-														<c:when test="${count == null }">
-														</c:when>
+											<li> <a href="cart.mc" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                      <!--  ㅎㅎㅎㅎ --> <c:choose>
+                                    <c:when test="${cartcount == null || cartcount ==0 }">
+                                    </c:when>
 
-														<c:otherwise>
-															<span class="count">${count }</span>
-														</c:otherwise>
-													</c:choose>
+                                    <c:otherwise>
+                                       <span class="count">${cartcount }</span>
+                                    </c:otherwise>
+                                 </c:choose>
 
-											</a></li>
+                           </a></li>
 										</c:otherwise>
 									</c:choose>
 
@@ -142,7 +143,7 @@
 							</ul></li>-->
 						<li><a href="shop.mc">Shop</a></li>
 						
-						<li><a href="#">New Arrivals</a></li>
+						
 						<li><a href="board.mc">Board</a></li>
 					</ul>
 				</div>

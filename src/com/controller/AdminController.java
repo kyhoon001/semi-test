@@ -116,6 +116,7 @@ public class AdminController {
 		
 		String imgname = vo.getMf().getOriginalFilename();
 		vo.setImg(imgname);
+		System.out.println(imgname);
 		mv.addObject("plist", "asdf");
 		try {
 

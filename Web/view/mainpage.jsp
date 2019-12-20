@@ -55,53 +55,6 @@
 	</div>
 </div>
 
-<<<<<<< HEAD
-=======
-<div class="site-section site-blocks-2">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade"
-				data-aos-delay="">
-				
-				<!--  --><a class="block-2-item" href="clickmainshop.mc?img=${dbproduct.img }">
-					<figure class="image">
-						<img src="images/img10.png" alt="" class="img-fluid">
-					</figure>
-					<div class="text">
-						<span class="text-uppercase">IoT 제품 신상</span>
-						<h3>${dbproduct.name }</h3>
-					</div>
-				</a>
-				
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade"
-				data-aos-delay="100">
-				<a class="block-2-item" href="#">
-					<figure class="image">
-						<img src="images/img3.png" alt="" class="img-fluid">
-					</figure>
-					<div class="text">
-						<span class="text-uppercase">가장 많이 찾는 제품</span>
-						<h3>${product.name }</h3>
-					</div>
-				</a>
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade"
-				data-aos-delay="200">
-				<a class="block-2-item" href="#">
-					<figure class="image">
-						<img src="images/img8.png" alt="" class="img-fluid">
-					</figure>
-					<div class="text">
-						<span class="text-uppercase">이런 제품은 어떠세요?</span>
-						<h3>${product.name }</h3>
-					</div>
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
->>>>>>> 9b830b7404aa2a17521534d8d81be297ce09e872
 
 <div class="site-section block-3 site-blocks-2 bg-light">
 	<div class="container">
