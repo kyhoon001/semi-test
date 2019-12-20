@@ -1,12 +1,14 @@
 # 멀티캠퍼스 IOT과정 1차 세미프로젝트 관련 자료입니다.
 
-~ 개발 언어 : HTML, CSS, JavaScript, Jquery, JSP, JSTL,Java
+- 개발환경 : window 10, Eclipse IDE,GitHub,Maven,Tomcatv9.0
 
-~ Database : Oracle DB
+- Front : JavaScript, CSS, HTML, JQuery, JSTL
 
-~ Framework : Maven, Spring, Mybatis, Bootstrap
+- Back : Spring Framework, MyBatis, Eclipse IDE(19-03), Oracle(11g Express Edition), Tomcat(9.0)
 
-~ IDE : Eclipse, Sqldeveloper
+- Framework : Maven, Spring, Mybatis, Bootstrap
+
+- IDE : Eclipse, Sqldeveloper
 
 
 
@@ -16,6 +18,5 @@
 
 
 
-## Tomcat server를 활용하였습니다.
 
 
