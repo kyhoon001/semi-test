@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.frame.OrderService;
 import com.frame.Service;
 import com.vo.CartProductVO;
 import com.vo.CartVO;
@@ -28,7 +27,7 @@ import com.vo.UserVO;
 public class OrderController {
 
 	@Resource(name = "orderservice")
-	OrderService service;
+	Service service;
 
 	@Resource(name = "cartservice")
 	Service<String, CartVO> cservice;

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.frame.Dao;
-import com.frame.OrderDao;
 import com.mapper.CartMapper;
 import com.mapper.OrderMapper;
 import com.mapper.ShopMapper;
@@ -17,7 +16,7 @@ import com.vo.OrderVO;
 import com.vo.ProductVO;
 
 @Repository("orderdao")
-public class OrderDAOImpl implements OrderDao<String, OrderVO,OrderDetailVO,CartProductVO,Integer> {
+public class OrderDAOImpl implements Dao<String, OrderVO> {
 	@Autowired
 	OrderMapper ordermap;
 	@Autowired

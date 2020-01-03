@@ -14,6 +14,11 @@ public class CategoryDao implements Dao<String, CategoryVO> {
 	@Autowired
 	CategoryMapper catemap;
 	
+	@Override
+	public void insert(CategoryVO v) throws Exception {
+		catemap.insert(v);
+		
+	}
 
 	@Override
 	public void delete(String k) throws Exception {

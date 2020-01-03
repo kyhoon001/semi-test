@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import com.frame.Dao;
-import com.frame.OrderDao;
-import com.frame.OrderService;
 import com.frame.Service;
 import com.vo.CartProductVO;
 import com.vo.CartVO;
@@ -15,10 +13,10 @@ import com.vo.OrderVO;
 import com.vo.ProductVO;
 
 @org.springframework.stereotype.Service("orderservice")
-public class OrderServiceImpl implements OrderService<String, OrderVO,OrderDetailVO,CartProductVO,Integer> {
+public class OrderServiceImpl implements Service<String, OrderVO> {
 	
 	@Resource(name="orderdao")
-	OrderDao<String, OrderVO,OrderDetailVO,CartProductVO,Integer> dao;
+	Dao<String, OrderVO> dao;
 	
 	@Override
 	public void register(OrderVO v) throws Exception {
