@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.servlet.ModelAndView;
 
-import com.frame.CartService;
+import com.frame.Service;
 import com.shop.ShopService;
 import com.vo.CartVO;
 import com.vo.UserVO;
@@ -22,7 +22,7 @@ public class CartController {
 
 
 	@Resource(name = "cartservice")
-	CartService cservice;
+	Service cservice;
 	ShopService pservice;
 	
 
@@ -82,8 +82,8 @@ public class CartController {
 		//이제 여기서 selectAll에 where절에 email을 줘서 뽑아오면 되겠지.
 		
 		try {
-			System.out.println(cservice.getAll(email));
-			list = cservice.getAll(email);
+			System.out.println(cservice.ggetAll(email));
+			list = cservice.ggetAll(email);
 			mav.addObject("plist",list);
 			mav.addObject("errormessage",errormessage);
 			mav.addObject("cartlist", "cartlist");

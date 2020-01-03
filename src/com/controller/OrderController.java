@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.frame.CartService;
 import com.frame.OrderService;
 import com.frame.Service;
 import com.vo.CartProductVO;
@@ -32,7 +31,7 @@ public class OrderController {
 	OrderService service;
 
 	@Resource(name = "cartservice")
-	CartService<String, CartVO, CartProductVO> cservice;
+	Service<String, CartVO> cservice;
 
 	@Resource(name = "shopservice")
 	Service<String, ProductVO> sservice;
@@ -52,7 +51,7 @@ public class OrderController {
 		ArrayList<CartProductVO> list;
 		try {
 			
-			list = cservice.getAll(email);
+			list = cservice.ggetAll(email);
 			boolean b = true;
 			for (int i = 0; i < list.size(); i++) {
 				

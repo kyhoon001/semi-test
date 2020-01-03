@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.frame.CartDao;
+import com.frame.Dao;
 import com.mapper.CartMapper;
 import com.vo.CartProductVO;
 import com.vo.CartVO;
 
 @Repository("cartdao")
-public class CartDaoImpl implements CartDao<String, CartVO,CartProductVO> {
+public class CartDaoImpl implements Dao<String, CartVO> {
 
 	@Autowired
 	CartMapper cartmap;
@@ -37,7 +37,7 @@ public class CartDaoImpl implements CartDao<String, CartVO,CartProductVO> {
 	}
 
 	@Override
-	public ArrayList<CartProductVO> selectAll(String k) throws Exception {
+	public ArrayList<CartProductVO> sselectAll(String k) throws Exception {
 
 		return cartmap.selectall(k);
 	}

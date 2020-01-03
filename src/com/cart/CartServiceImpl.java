@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
-import com.frame.CartDao;
-import com.frame.CartService;
+import com.frame.Dao;
+import com.frame.Service;
 import com.vo.CartProductVO;
 import com.vo.CartVO;
 
 
 @org.springframework.stereotype.Service("cartservice")
-public class CartServiceImpl implements CartService<String, CartVO,CartProductVO> {
+public class CartServiceImpl implements Service<String, CartVO> {
 	
 	@Resource(name="cartdao")
-	CartDao<String, CartVO,CartProductVO> dao;
+	Dao<String, CartVO> dao;
 
 	@Override
 	public void register(CartVO v) throws Exception {
@@ -37,8 +37,8 @@ public class CartServiceImpl implements CartService<String, CartVO,CartProductVO
 	}
 
 	@Override
-	public ArrayList<CartProductVO> getAll(String k) throws Exception {
-		return dao.selectAll(k);
+	public ArrayList<CartProductVO> ggetAll(String k) throws Exception {
+		return dao.sselectAll(k);
 	}
 
 	@Override

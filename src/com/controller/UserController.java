@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.frame.CartService;
 import com.frame.Service;
 import com.vo.UserVO;
 
@@ -24,7 +23,7 @@ public class UserController {
 	@Resource(name="uservice")
 	private Service service;
 	@Resource(name="cartservice")
-	private CartService cartservice;
+	private Service cartservice;
 	
 	@RequestMapping("login.mc")
 	public ModelAndView login() {

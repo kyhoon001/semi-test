@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.frame.CartService;
 import com.frame.Service;
 import com.shop.ShopService;
 import com.vo.CartProductVO;
@@ -28,7 +27,7 @@ public class PurchaseController {
 	private Service service;
 	
 	@Resource(name = "cartservice")
-	CartService<String,CartVO,CartProductVO> cservice;
+	Service<String,CartVO> cservice;
 	ShopService pservice;
 	
 
@@ -44,7 +43,7 @@ public class PurchaseController {
 			user = (UserVO) service.get(email);
 			mav.addObject("checkuser",user);
 			
-			list = cservice.getAll(email);
+			list = cservice.ggetAll(email);
 			
 			int total = 0;
 			for(int i = 0; i < list.size(); i++) {
