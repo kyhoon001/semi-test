@@ -12,11 +12,12 @@
 
 
 
-## Spring 을 활용하였습니다.
+## 관련 내용
+>> spring, mybatis, maven을 활용하였습니다.
 >> dao, service, 각 impl 모델을 만든 뒤 의존성을 주입하였습니다.
+>> dao는 mybatis 관련 xml과 1:1로 매칭되며 이를 통해 DB에 접근하였습니다.
 >> 관련 PPT 업데이트 예정입니다.
-
-
+ 
 
 
 
