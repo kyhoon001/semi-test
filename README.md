@@ -1,23 +1,77 @@
 # 멀티캠퍼스 IOT과정 1차 세미프로젝트 관련 자료입니다.
 
-- 개발환경 : window 10, Eclipse IDE,GitHub,Maven,Tomcatv9.0
 
-- Front : JavaScript, CSS, HTML, JQuery, JSTL
 
-- Back : Spring Framework, MyBatis, Eclipse IDE(19-03), Oracle(11g Express Edition), Tomcat(9.0)
+## 1.  주제 설정
 
-- Framework : Maven, Spring, Mybatis, Bootstrap
+향후에 제작하게 될 IOT 장비를 판매할 수 있는 쇼핑몰을 제작한다는 컨셉으로 제작하였습니다. 이번 세미프로젝트의 결과물은 앞으로의 프로젝트에서도 지속적으로 사용될 예정입니다. 마지막에는 IOT장비의 관제시스템을 탑제하여 쇼핑몰 사이트를 이용하여 해당하는 장비를 제어할 수 있게 사이트를 구성할 예정입니다.
 
-- IDE : Eclipse, Sqldeveloper
+## 2.   시스템 구조 및 아키텍쳐 설계
 
 
 
-## 관련 내용
->> spring, mybatis, maven을 활용하였습니다.
->> dao, service, 각 impl 모델을 만든 뒤 의존성을 주입하였습니다.
->> dao는 mybatis 관련 xml과 1:1로 매칭되며 이를 통해 DB에 접근하였습니다.
->> 관련 PPT 업데이트 예정입니다.
- 
+![image-20200130111102242](https://user-images.githubusercontent.com/58680504/73420362-93e15f00-4365-11ea-8795-128b155ef602.png)
+
+![image-20200130111217124](https://user-images.githubusercontent.com/58680504/73420363-93e15f00-4365-11ea-8472-bc320c078ac5.png)
+
+## 3.   Database 설계
+
+![image-20200130111224600](https://user-images.githubusercontent.com/58680504/73420365-93e15f00-4365-11ea-9809-a4a75df35d25.png)
+
+## 4.   화면 설계 및 시스템 구축
+
+![image-20200130111317224](https://user-images.githubusercontent.com/58680504/73420366-9479f580-4365-11ea-9bbd-95b23f149525.png)
+
+main.jsp 호출시 해당 화면이 나타나며 화면상단의 shop 태그를 누르면 상품 목록 페이지로 이동합니다.
+
+![image-20200130111847084](https://user-images.githubusercontent.com/58680504/73420367-9479f580-4365-11ea-8b7a-64b17e23db90.png)
+
+ shop.mc를 호출하게 되면 해당 화면이 나타납니다. Pagination을위해 전체목록의 개수를 먼저 db에서 불러오고 전체 개수와 지정된 range를 이용해 pagination합니다 저희 쇼핑몰의 range는 5로 두었으며 한 페이지당 12개의 목록을 불러오기로 정하였습니다.                        
+
+![image-20200130112517140](https://user-images.githubusercontent.com/58680504/73420368-9479f580-4365-11ea-9307-a70ff0379557.png)다음은 정렬을 위해서 정렬 기준을 productlist.jsp에서 dropdown으로 나타내었습니다. pagination을 위해서 정렬마다 각각의 쿼리를 부여하였습니다.
+
+![image-20200130112943060](https://user-images.githubusercontent.com/58680504/73420369-9479f580-4365-11ea-97d0-fd87c9f109ee.png)
+
+좌측의 카테고리는 search기능을 사용하여 카테고리에 부합하는 목록을 나타내었습니다. 이름이 한글이기 때문에 shop.jsp에서 인코딩을 하는 js코드를 작성하고 컨트롤러에서 디코딩하여 db에서 값을 불러왔습니다.   
+
+![image-20200130113258392](https://user-images.githubusercontent.com/57747689/73420631-87a9d180-4366-11ea-9ec8-2799ab99a785.png)
+
+위와 같이 admin 계정으로 로그인 할 경우 세션에 있는 이메일 정보를 이용해 상품을 등록할 수 있는 버튼이 생성되도록 설계하였습니다.
+
+## ![image-20200130112943060](https://user-images.githubusercontent.com/58680504/73420370-95128c00-4365-11ea-8e91-7231a976feb2.png)
+
+상품등록 버튼을 누르게 되면 pregister.mc로 이동하게 되며 상품을 등록할 수 있는 페이지가 나옵니다. 파일 선택 시 이미지의 이름과 확장자는 DB에 저장되며 이미지 파일은 C:\\spring\\header\\web\\images\\에 저장됩니다. 
 
 
 
+![image-20200130113208712](https://user-images.githubusercontent.com/58680504/73420371-95128c00-4365-11ea-8e13-4e0eb2a9143d.png)그리고 상품을 클릭하면 위와 같이 장바구니 버튼 외에 추가로 상품 수정 및 삭제 버튼이 나타나며 수정과 삭제 기능을 사용할 수 있습니다.
+
+![일반회원 상품목록](https://user-images.githubusercontent.com/57747689/73620960-85ea5180-4677-11ea-9166-f9ecabe4a015.png)
+
+Admin 계정이 아닐시에는 위와같이 삼품 등록 및 수정버튼이 활성화 되지않고 장바구니 페이지로만 이동할 수 있습니다. 해당기능은 세션의 아이디 정보를 통해 구현하였습니다.
+
+![상품 상세 페이지](https://user-images.githubusercontent.com/57747689/73620897-3efc5c00-4677-11ea-9ce5-7d508304b9f8.png)
+
+장바구니를 클릭하면 해당 상품을 장바구니에 저장하게 됩니다. 세션에 저장된 로그인 정보를 활용하여 특정 유저의 장바구니에 접근하게 됩니다. 만약 로그인이 되어있지 않을 경우 로그인 페이지로 이동합니다.
+
+![장바구니 상세](https://user-images.githubusercontent.com/57747689/73620898-3efc5c00-4677-11ea-8903-29030b3a4f0b.png)
+
+수량 변경의 경우, 증가 혹은 감소 버튼을 누를 시, 페이지 내에서만 반응하고 DB에는 반영되지 않습니다.
+
+원하는 수량으로 변경 후 하단의 새로고침 버튼을 클릭하면 해당 정보를 이용하여 DB의 정보를 업데이트하는 방식으로 구현하였습니다.
+
+버튼을 클릭할때마다 DB에 접근하는 것보다는, 해당 방법이 트랜잭션을 줄일 수 있을 것이라고 생각하여 위와 같은 방식으로 구현하였습니다.
+
+![](https://user-images.githubusercontent.com/57747689/73620901-3f94f280-4677-11ea-9434-903012181746.png)
+
+구매하고자 하는 물품의 수량이 부족할 경우 구매가 이루어지지 않고 장바구니로 다시 이동하게 됩니다. 같이 구매하는 상품 중 1개의 상품이라도 재고가 부족할 경우 구매가 이루어지지 않으며 그림과 같은 메시지를 출력하며 장바구니로 이동합니다.
+
+![](https://user-images.githubusercontent.com/57747689/73620899-3f94f280-4677-11ea-9325-0bdb45a7b785.png)
+
+
+
+![](https://user-images.githubusercontent.com/57747689/73620900-3f94f280-4677-11ea-8df0-d80b199e01a3.png)
+
+물품을 구매할 경우 구매한 물품들은 하나의 주문번호로 엮이게 됩니다. 해당 주문 번호를 클릭할 경우 해당 주문을 통해 주문한 상품들의 목록을 확인할 수 있습니다.
+
+이는 주문 명세서의 역할을 합니다.
